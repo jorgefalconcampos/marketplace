@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Marketplace</title>
+    <link rel="stylesheet" href="./estilos.css" />
+    <!-- font awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body class="waves resetCSS">
+    <nav>
+      <ul class="navbar">
+        <li class="navbar-item">
+          <a class="navbar-link" href="/index.html">Inicio</a> |
+        </li>
+        <li class="navbar-item">
+          <a class="navbar-link" href="/categorias.html">Categorías</a> |
+        </li>
+        <li class="navbar-item">
+          <a class="navbar-link" href="/detalle.html">Detalle</a> |
+        </li>
+        <li class="navbar-item">
+          <a class="navbar-link" href="/roadmap.html">Roadmap</a> |
+        </li>
+        <li class="navbar-item">
+          <a class="navbar-link active" href="/contacto.html">Contacto</a>
+          <ul>
+            <li class="navbar-sublink">
+              <a href="/contacto.html">Formulario</a>
+            </li>
+            <li class="navbar-sublink"><a href="tel:123456789">Teléfono</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <main>
+      <h1 class="title center">Contáctanos</h1>
+
+      <form action="post" class="form-container">
+        <ul class="flex-parent">
+          <li>
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" placeholder="Escribe tu nombre" />
+          </li>
+          <li>
+            <label for="nombre">Apellido</label>
+            <input
+              type="text"
+              id="apellido"
+              placeholder="Escribe tu apellido"
+            />
+          </li>
+          <li>
+            <p>Sexo:</p>
+            <div>
+              <input type="radio" id="hombre" name="sexo" value="hombre" />
+              <label for="hombre">hombre</label>
+              <input type="radio" id="mujer" name="sexo" value="mujer" />
+              <label for="mujer">mujer</label>
+            </div>
+          </li>
+          <li>
+            <label for="terminos">Acepto los términos y condiciones</label>
+            <input type="checkbox" name="terminos" id="terminos" />
+          </li>
+          <li>
+            <label for="comentarios">Comentarios:</label>
+            <textarea
+              id="coments"
+              name="comentarios"
+              id="comentarios"
+              cols="30"
+              rows="10"
+            ></textarea>
+          </li>
+          <li>
+            <input
+              class="button button-sm reset-button"
+              type="reset"
+              value="Reiniciar"
+            />
+            <input
+              class="button button-sm send-button"
+              type="submit"
+              value="Enviar"
+            />
+          </li>
+        </ul>
+      </form>
+    </main>
+    <footer class="footer-end footer-pattern">
+      <!-- set de items 1 -->
+      <div class="">
+        <h4>Título del set de items 1 del footer</h4>
+        <ul>
+          <li>Link 1</li>
+          <li>Link 2</li>
+          <li>Link 3</li>
+        </ul>
+      </div>
+      <!-- set de items 2 -->
+      <div>
+        <h4>Título del set de items 2 del footer</h4>
+        <ul>
+          <li>Link 1</li>
+          <li>Link 2</li>
+          <li>Link 3</li>
+        </ul>
+      </div>
+      <!-- set de items 3 -->
+      <div>
+        <h4>Título del set de items 3 del footer</h4>
+        <ul>
+          <li>Link 1</li>
+          <li>Link 2</li>
+          <li>Link 3</li>
+        </ul>
+      </div>
+
+      <hr />
+
+      <!-- iconos de social media -->
+      <div class="footer-sm">
+        <ul class="navbar">
+          <li><i class="fab fa-facebook-square fa-3x"></i></li>
+          <li><i class="fab fa-instagram-square fa-3x"></i></li>
+          <li><i class="fab fa-twitter-square fa-3x"></i></li>
+          <li><i class="fab fa-youtube-square fa-3x"></i></li>
+        </ul>
+      </div>
+
+      <hr />
+
+      <div class="center add-spacing">
+        <p>Copyright © 2022</p>
+        <p>< / > with 💙 in CDMX</p>
+      </div>
+
+      <!-- links útiles -->
+      <div class="footer-final">
+        <ul class="navbar">
+          <li>Acerca De</li>
+          •
+          <li>Contacto</li>
+          •
+          <li>Política de Privacidad</li>
+        </ul>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -188,6 +188,46 @@ main {
   background-color: #1a1a1a;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 100 100'%3E%3Crect x='0' y='0' width='33' height='33' fill-opacity='0.03' fill='%23858585'/%3E%3C/svg%3E"); }
 
+.grid {
+  text-align: center;
+  display: grid;
+  width: 100%;
+  grid-template-columns: 45px repeat(3, 1fr);
+  grid-template-rows: 40px auto 50px;
+  grid-gap: 10px;
+  grid-template-areas: "roadmap   header  header header" "roadmap     main  main   main" "roadmap   footer  footer footer"; }
+
+.grid__title {
+  font-size: 35px;
+  color: #008cfe;
+  grid-area: header; }
+
+.grid__desc {
+  background: #89a09f;
+  grid-area: main; }
+
+.grid__desc > ul > li {
+  line-height: 40px;
+  list-style: none; }
+
+.grid__roadmap {
+  color: white;
+  font-size: 30px;
+  grid-area: roadmap;
+  text-orientation: upright;
+  writing-mode: vertical-lr;
+  text-transform: uppercase;
+  font-weight: bold;
+  display: flex;
+  /* letter-spacing: ; */
+  justify-content: center;
+  align-items: center; }
+
+.grid__footer {
+  grid-area: footer;
+  font-size: 14px;
+  color: white; }
+
 .nav {
   list-style-type: none;
   margin: 0.25rem 0.25rem 0 0.25rem;

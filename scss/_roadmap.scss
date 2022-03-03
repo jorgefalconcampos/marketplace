@@ -1,0 +1,50 @@
+
+
+.grid {
+    text-align: center;
+    display: grid;
+    width: 100%;
+    grid-template-columns: 45px repeat(3, 1fr);
+    grid-template-rows: 40px auto 50px ;
+    grid-gap: 10px;
+    
+    grid-template-areas: "roadmap   header  header header"
+                         "roadmap     main  main   main"
+                         "roadmap   footer  footer footer";
+  }
+  
+  
+  .grid__title {
+    font-size: 35px;
+    color: #008cfe;
+    grid-area: header;
+  }
+  .grid__desc {
+    background: #89a09f;
+    grid-area: main;
+  }
+  
+  .grid__desc > ul >li {
+    line-height: 40px;
+    list-style:none;
+  }
+  
+  .grid__roadmap {
+    color: white;
+    font-size: 30px;
+    grid-area: roadmap;
+    text-orientation: upright;
+    writing-mode: vertical-lr;
+    text-transform: uppercase;
+    font-weight: bold;
+    display: flex;
+    /* letter-spacing: ; */
+    justify-content: center;
+    align-items: center;
+  }
+  .grid__footer {
+    grid-area: footer;
+    font-size: 14px;
+    color: white;
+  
+  }

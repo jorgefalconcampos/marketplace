@@ -5,7 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Marketplace</title>
-    <link rel="stylesheet" href="./estilos.css" />
+    <link rel="stylesheet" href="./css/estilos.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
     <!-- font awesome -->
     <link
       rel="stylesheet"
@@ -15,28 +26,28 @@
       referrerpolicy="no-referrer"
     />
   </head>
-  <body class="waves resetCSS">
+  <body class="waves">
     <nav>
-      <ul class="navbar">
-        <li class="navbar-item">
-          <a class="navbar-link" href="/index.html">Inicio</a> |
+      <ul class="nav">
+        <li class="nav__item">
+          <a class="nav__link" href="/index.html">Inicio</a> |
         </li>
-        <li class="navbar-item">
-          <a class="navbar-link" href="/categorias.html">Categorías</a> |
+        <li class="nav__item">
+          <a class="nav__link" href="/categorias.html">Categorías</a> |
         </li>
-        <li class="navbar-item">
-          <a class="navbar-link active" href="/detalle.html">Detalle</a> |
+        <li class="nav__item">
+          <a class="nav__link active" href="/detalle.html">Detalle</a> |
         </li>
-        <li class="navbar-item">
-          <a class="navbar-link" href="/roadmap.html">Roadmap</a> |
+        <li class="nav__item">
+          <a class="nav__link" href="/roadmap.html">Roadmap</a> |
         </li>
-        <li class="navbar-item">
-          <a class="navbar-link" href="/contacto.html">Contacto</a>
+        <li class="nav__item">
+          <a class="nav__link" href="/contacto.html">Contacto</a>
           <ul>
-            <li class="navbar-sublink">
+            <li class="nav__sublink">
               <a href="/contacto.html">Formulario</a>
             </li>
-            <li class="navbar-sublink"><a href="tel:123456789">Teléfono</a></li>
+            <li class="nav__sublink"><a href="tel:123456789">Teléfono</a></li>
           </ul>
         </li>
       </ul>
@@ -58,44 +69,78 @@
         </div>
       </div>
     </main>
-    <footer class="footer-end footer-pattern">
-      <!-- set de items 1 -->
-      <div class="">
-        <h4>Título del set de items 1 del footer</h4>
-        <ul>
-          <li>Link 1</li>
-          <li>Link 2</li>
-          <li>Link 3</li>
-        </ul>
-      </div>
-      <!-- set de items 2 -->
-      <div>
-        <h4>Título del set de items 2 del footer</h4>
-        <ul>
-          <li>Link 1</li>
-          <li>Link 2</li>
-          <li>Link 3</li>
-        </ul>
-      </div>
-      <!-- set de items 3 -->
-      <div>
-        <h4>Título del set de items 3 del footer</h4>
-        <ul>
-          <li>Link 1</li>
-          <li>Link 2</li>
-          <li>Link 3</li>
-        </ul>
+    <footer class="px-5 py-5 footer--pattern">
+      <div class="row">
+        <div class="col-12 col-md">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            class="d-block mb-2"
+            role="img"
+            viewBox="0 0 24 24"
+          >
+            <title>Product</title>
+            <circle cx="12" cy="12" r="10" />
+            <path
+              d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74 9.94"
+            />
+          </svg>
+          <small class="d-block mb-3 text-muted">&copy; 2021</small>
+        </div>
+        <div class="col-6 col-md">
+          <h5>Links</h5>
+          <ul class="list-unstyled text-small">
+            <li><a class="link-secondary" href="#">Prensa</a></li>
+            <li><a class="link-secondary" href="#">Blog</a></li>
+            <li><a class="link-secondary" href="#">Contacto</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md">
+          <h5>Empresa</h5>
+          <ul class="list-unstyled text-small">
+            <li><a class="link-secondary" href="#">Roadmap</a></li>
+            <li><a class="link-secondary" href="#">Fundaciones</a></li>
+            <li><a class="link-secondary" href="#">Socios</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md">
+          <h5>Artesanos</h5>
+          <ul class="list-unstyled text-small">
+            <li><a class="link-secondary" href="#">Oaxaca</a></li>
+            <li><a class="link-secondary" href="#">San Martín Ticajete</a></li>
+            <li><a class="link-secondary" href="#">San Antonio Arrazola</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md">
+          <h5>About</h5>
+          <ul class="list-unstyled text-small">
+            <li><a class="link-secondary" href="#">Team</a></li>
+            <li><a class="link-secondary" href="#">Locaciones</a></li>
+            <li><a class="link-secondary" href="#">Privacidad</a></li>
+            <li>
+              <a class="link-secondary" href="#">Términos y Condiciones</a>
+            </li>
+          </ul>
+        </div>
       </div>
 
       <hr />
 
       <!-- iconos de social media -->
-      <div class="footer-sm">
-        <ul class="navbar">
-          <li><i class="fab fa-facebook-square fa-3x"></i></li>
-          <li><i class="fab fa-instagram-square fa-3x"></i></li>
-          <li><i class="fab fa-twitter-square fa-3x"></i></li>
-          <li><i class="fab fa-youtube-square fa-3x"></i></li>
+      <div class="footer--center">
+        <ul class="nav">
+          <div class="footer__sm">
+            <li><i class="fab fa-facebook-square fa-3x"></i></li>
+            <li><i class="fab fa-instagram-square fa-3x"></i></li>
+            <li><i class="fab fa-twitter-square fa-3x"></i></li>
+            <li><i class="fab fa-youtube-square fa-3x"></i></li>
+          </div>
         </ul>
       </div>
 
@@ -107,8 +152,8 @@
       </div>
 
       <!-- links útiles -->
-      <div class="footer-final">
-        <ul class="navbar">
+      <div class="footer__final">
+        <ul class="nav">
           <li>Acerca De</li>
           •
           <li>Contacto</li>

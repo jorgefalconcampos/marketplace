@@ -1,0 +1,49 @@
+.footer {
+  list-style: disc;
+}
+
+// social media
+.footer--center {
+  text-align: center;
+  margin: 1rem 0;
+
+  * {
+    color: #797979 !important;
+    border-radius: 10px;
+    padding: 8px 10px 8px 10px;
+    margin: 0 1rem;
+  }
+}
+
+.footer__sm {
+  li {
+    i {
+      &:hover {
+        cursor: pointer;
+        color: #cecece !important;
+
+        box-shadow: 0px 2px 20px 2px #d544e2;
+      }
+    }
+  }
+}
+
+.footer__final {
+  padding: 0.3rem;
+  color: #008cfe;
+  background: linear-gradient(to bottom, #434343, #383838);
+
+  ul {
+    * {
+      padding: 0 1.25rem 0 1.25rem;
+      color: #bebebe !important;
+    }
+  }
+}
+
+.footer--pattern {
+  color: #797979 !important;
+  padding-bottom: 0;
+  background-color: #1a1a1a;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 100 100'%3E%3Crect x='0' y='0' width='33' height='33' fill-opacity='0.03' fill='%23858585'/%3E%3C/svg%3E");
+}

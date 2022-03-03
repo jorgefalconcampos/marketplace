@@ -1,0 +1,186 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "DM Sans", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: white;
+}
+
+ul {
+  list-style-type: square;
+  list-style-position: outside;
+}
+
+table {
+  color: #e2e2e2;
+  border: 2px solid #008cfe;
+  border-radius: 10px;
+  box-shadow: 0 8px 32px 0 rgba(44, 45, 53, 0.37) !important;
+  width: 80%;
+  margin: 2rem 0.5rem;
+
+  a {
+    background-color: rgba(44, 44, 44, 0.719);
+    color: #b334be;
+  }
+}
+
+td {
+  border-radius: 10px;
+}
+
+main {
+  margin-top: 2.5rem;
+}
+
+.title {
+  font-size: 4rem;
+  color: #0479ff;
+  font-family: "Bebas Neue", cursive;
+  font-style: italic;
+  line-height: 2;
+  text-decoration: line-through;
+  text-align: center;
+}
+
+.center {
+  text-align: center;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* generado por https://hype4.academy/tools/glassmorphism-generator */
+.glass {
+  background: rgba(255, 255, 255, 0.116);
+  box-shadow: 0 8px 32px 0 rgba(44, 45, 53, 0.37);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  border: 2px solid rgba(255, 255, 255, 0.18);
+  border-radius: 15px;
+  margin: 1.5rem;
+  padding: 1.5rem 1.5rem;
+}
+
+.resetCSS {
+  margin: 0;
+  padding: 0;
+}
+
+.add-spacing {
+  margin: 1rem;
+  padding: 0.25rem;
+}
+
+.sticky-contact {
+  display: block;
+  z-index: 1;
+  position: fixed;
+  bottom: 1.5rem;
+  right: 2rem;
+  padding: 0.75rem;
+  color: #e2e2e2;
+  border-radius: 50px;
+  background-color: #d544e2;
+  box-shadow: 0px 2px 20px 2px #b334be;
+
+  &:hover {
+    background-color: #0479ff;
+    box-shadow: 0px 2px 20px 2px #1e63ca;
+  }
+}
+
+.waves {
+  background-image: url("../static/img/waves.jpg");
+  max-width: 100vw;
+  background-color: #141321;
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover;
+}
+
+.active {
+  font-weight: bold;
+  background-color: #0479ff;
+  box-shadow: 0px 2px 20px 2px #1e63ca;
+}
+
+.img-zoom {
+  transition: transform 0.5s;
+
+  &:hover {
+    transform: scale(1.2);
+  }
+}
+
+.button {
+  border: none;
+  outline: none;
+  font-size: 2rem;
+  background-color: #d544e2;
+  color: #e2e2e2;
+  cursor: pointer;
+  border-radius: 50px;
+  text-transform: capitalize;
+  box-shadow: 0px 2px 20px 2px #d544e2;
+  padding: 0.3rem 2.5rem;
+  /* margin: 0px 0px 2rem 2rem; */
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.h2-right {
+  margin: 5rem 2rem 0;
+}
+
+.table-wrap {
+  background-color: red;
+}
+
+.table-link {
+  background-color: rgba(44, 44, 44, 0.719);
+  color: #b334be;
+}
+
+.table-title {
+  text-align: center;
+  font-size: 50px;
+  font-weight: bold;
+  color: #b334be;
+}
+
+.table-sub-head {
+  display: flex;
+}
+
+.table-head {
+  background-color: #008cfe;
+  padding: 10px;
+  margin: 3px 0 15px 0;
+  border-radius: 10px;
+
+  .row {
+    display: flex; /* aligns all child elements (flex items) in a row */
+  }
+}
+
+.col {
+  color: white;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  flex-flow: column-reverse;
+  justify-content: center;
+  align-items: center;
+  order: unset;
+  flex: 1; /* distributes space on the line equally among items */
+}

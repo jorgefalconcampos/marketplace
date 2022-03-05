@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;700&display=swap");
+@import "./variables";
 
 * {
   margin: 0;
@@ -23,7 +24,7 @@ ul {
 
 table {
   color: #e2e2e2;
-  border: 2px solid #008cfe;
+  border: 2px solid $blue;
   border-radius: 10px;
   box-shadow: 0 8px 32px 0 rgba(44, 45, 53, 0.37) !important;
   width: 80%;
@@ -31,7 +32,7 @@ table {
 
   a {
     background-color: rgba(44, 44, 44, 0.719);
-    color: #b334be;
+    color: $pink-shadow;
   }
 }
 
@@ -45,7 +46,7 @@ main {
 
 .title {
   font-size: 4rem;
-  color: #0479ff;
+  color: $blue;
   font-family: "Bebas Neue", cursive;
   font-style: italic;
   line-height: 2;
@@ -91,12 +92,12 @@ main {
   padding: 0.75rem;
   color: #e2e2e2;
   border-radius: 50px;
-  background-color: #d544e2;
-  box-shadow: 0px 2px 20px 2px #b334be;
+  background-color: $pink;
+  box-shadow: 0px 2px 20px 2px $pink-shadow;
 
   &:hover {
-    background-color: #0479ff;
-    box-shadow: 0px 2px 20px 2px #1e63ca;
+    background-color: $blue;
+    box-shadow: 0px 2px 20px 2px $blue-shadow;
   }
 }
 
@@ -111,8 +112,8 @@ main {
 
 .active {
   font-weight: bold;
-  background-color: #0479ff;
-  box-shadow: 0px 2px 20px 2px #1e63ca;
+  background-color: $blue;
+  box-shadow: 0px 2px 20px 2px $blue-shadow;
 }
 
 .img-zoom {
@@ -127,12 +128,12 @@ main {
   border: none;
   outline: none;
   font-size: 2rem;
-  background-color: #d544e2;
+  background-color: $pink;
   color: #e2e2e2;
   cursor: pointer;
   border-radius: 50px;
   text-transform: capitalize;
-  box-shadow: 0px 2px 20px 2px #d544e2;
+  box-shadow: 0px 2px 20px 2px $pink;
   padding: 0.3rem 2.5rem;
   /* margin: 0px 0px 2rem 2rem; */
   text-transform: uppercase;
@@ -149,14 +150,14 @@ main {
 
 .table-link {
   background-color: rgba(44, 44, 44, 0.719);
-  color: #b334be;
+  color: $pink-shadow;
 }
 
 .table-title {
   text-align: center;
   font-size: 50px;
   font-weight: bold;
-  color: #b334be;
+  color: $pink-shadow;
 }
 
 .table-sub-head {
@@ -164,7 +165,7 @@ main {
 }
 
 .table-head {
-  background-color: #008cfe;
+  background-color: $blue;
   padding: 10px;
   margin: 3px 0 15px 0;
   border-radius: 10px;
@@ -174,7 +175,7 @@ main {
   }
 }
 
-.col {
+.column {
   color: white;
   flex-direction: column;
   flex-wrap: nowrap;

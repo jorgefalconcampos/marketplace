@@ -1,4 +1,4 @@
-
+@import "./variables";
 
 .grid {
     text-align: center;
@@ -16,7 +16,7 @@
   
   .grid__title {
     font-size: 35px;
-    color: #008cfe;
+    color: $blue;
     grid-area: header;
   }
   .grid__desc {

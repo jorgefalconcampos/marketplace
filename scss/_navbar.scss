@@ -1,4 +1,4 @@
-
+@import "./variables";
 
 .nav {
     list-style-type: none;
@@ -27,11 +27,15 @@
     text-decoration: none;
     padding: 1rem 2rem;
 
+  
+
     &:hover{
         transform: translateY(100px);
+        color: white;
+
         /* transition: all 0.1s ease 0.1s; */
-        background-color: #d544e2;
-        box-shadow: 0px 2px 20px 2px #b334be;
+        background-color: $pink;
+        box-shadow: 0px 2px 20px 2px $pink-shadow;
     }
 
 }
@@ -44,8 +48,8 @@
     }
 
     ul {
-        background-color: #008cfe;
-        box-shadow: 0px 2px 20px 2px #1e63ca;
+        background-color: $blue;
+        box-shadow: 0px 2px 20px 2px $blue-shadow;
         border-radius: 20px;
         position: absolute;
         padding: 0;
@@ -60,8 +64,8 @@
 
             &:hover {
                 display: block;
-                box-shadow: 0px 2px 20px 2px #b334be;
-                background-color: #d544e2;
+                box-shadow: 0px 2px 20px 2px $pink-shadow;
+                background-color: $pink;
                 transform: translateX(10px);
             }
         }
@@ -76,7 +80,13 @@
     color: #e2e2e2;
     text-decoration: none;
 
-    a{
+    a {
+        text-decoration: none;
+        color: #e2e2e2;
+        
+    }
+
+    a:hover{
         text-decoration: none;
         color: #e2e2e2;
     }

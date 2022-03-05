@@ -36,7 +36,7 @@ main {
 
 .title {
   font-size: 4rem;
-  color: #0479ff;
+  color: #008cfe;
   font-family: "Bebas Neue", cursive;
   font-style: italic;
   line-height: 2;
@@ -80,7 +80,7 @@ main {
   background-color: #d544e2;
   box-shadow: 0px 2px 20px 2px #b334be; }
   .sticky-contact:hover {
-    background-color: #0479ff;
+    background-color: #008cfe;
     box-shadow: 0px 2px 20px 2px #1e63ca; }
 
 .waves {
@@ -95,7 +95,7 @@ main {
 
 .active {
   font-weight: bold;
-  background-color: #0479ff;
+  background-color: #008cfe;
   box-shadow: 0px 2px 20px 2px #1e63ca; }
 
 .img-zoom {
@@ -146,7 +146,7 @@ main {
     display: flex;
     /* aligns all child elements (flex items) in a row */ }
 
-.col {
+.column {
   color: white;
   flex-direction: column;
   flex-wrap: nowrap;
@@ -246,6 +246,7 @@ main {
   padding: 1rem 2rem; }
   .nav__link:hover {
     transform: translateY(100px);
+    color: white;
     /* transition: all 0.1s ease 0.1s; */
     background-color: #d544e2;
     box-shadow: 0px 2px 20px 2px #b334be; }
@@ -280,3 +281,56 @@ main {
   .nav__sublink a {
     text-decoration: none;
     color: #e2e2e2; }
+  .nav__sublink a:hover {
+    text-decoration: none;
+    color: #e2e2e2; }
+
+.alebrije-1 {
+  width: 100%;
+  height: 200px;
+  background-image: url("../static/img/alebrije1.png");
+  background-position: center;
+  /* Center the image */
+  background-repeat: no-repeat;
+  /* Do not repeat the image */
+  background-size: cover; }
+
+.alebrije-2 {
+  width: 100%;
+  height: 200px;
+  background-image: url("../static/img/alebrije2.png");
+  background-position: center;
+  /* Center the image */
+  background-repeat: no-repeat;
+  /* Do not repeat the image */
+  background-size: cover; }
+
+.alebrije-3 {
+  width: 100%;
+  height: 200px;
+  background-image: url("../static/img/alebrije3.png");
+  background-position: center;
+  /* Center the image */
+  background-repeat: no-repeat;
+  /* Do not repeat the image */
+  background-size: cover; }
+
+.alebrije-4 {
+  width: 100%;
+  height: 200px;
+  background-image: url("../static/img/alebrije4.png");
+  background-position: center;
+  /* Center the image */
+  background-repeat: no-repeat;
+  /* Do not repeat the image */
+  background-size: cover; }
+
+.alebrije-5 {
+  width: 100%;
+  height: 200px;
+  background-image: url("../static/img/alebrije5.png");
+  background-position: center;
+  /* Center the image */
+  background-repeat: no-repeat;
+  /* Do not repeat the image */
+  background-size: cover; }

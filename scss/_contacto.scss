@@ -1,0 +1,86 @@
+
+.form-container {
+    margin: 0 0 5rem;
+}
+
+.flex-parent {
+  color: #f2f2f2;
+}
+
+.flex-parent {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.flex-parent li,
+.flex-child {
+  display: flex;
+  flex-wrap: no;
+  align-items: center;
+}
+
+.flex-child {
+  padding: 0 8px;
+  justify-content: space-between;  
+}
+
+.flex-parent > li:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+
+
+.flex-parent > li > label,
+.flex-parent li p {
+  flex: 1 0 110px;
+  max-width: 220px;
+}
+
+.flex-parent > li > label + *,
+.flex-child {
+  flex: 1 0 220px;
+}
+
+.flex-parent li p {
+  margin: 0;
+}
+
+.flex-parent li input {
+    padding: 10px;
+}
+
+.flex-parent li button {
+  margin-left: auto;
+  padding: 8px 16px;
+  border: none;
+  background: #333;
+  color: #f2f2f2;
+  text-transform: uppercase;
+  letter-spacing: .09em;
+  border-radius: 2px;
+}
+
+.flex-child li {
+  width: 100px;
+}
+
+.button-sm {
+    margin: 0 0.5rem 0;
+    font-size: 1rem;
+}
+
+.button:hover {
+    background-color: #0479ff;
+    box-shadow: 0px 2px 20px 2px #0479ff;
+    text-decoration: underline;
+  }
+  
+  .reset-button {
+      background-color: #e21f1f;
+      box-shadow: 0px 2px 20px 2px #e24944;
+  }
+  
+  .send-button {
+      background-color: #43a81b;
+      box-shadow: 0px 2px 20px 2px #51b125;
+  }

@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Conoce nuestro roadmap.">
+    <meta name="description" content="Conoce nuestro roadmap." />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Marketplace</title>
@@ -34,13 +34,19 @@
           <a class="nav__link" href="/marketplace/index.html">Inicio</a> |
         </li>
         <li class="nav__item">
-          <a class="nav__link" href="/marketplace/categorias.html">Categorías</a> |
+          <a class="nav__link" href="/marketplace/categorias.html"
+            >Categorías</a
+          >
+          |
         </li>
         <li class="nav__item">
           <a class="nav__link" href="/marketplace/detalle.html">Detalle</a> |
         </li>
         <li class="nav__item">
-          <a class="nav__link active" href="/marketplace/roadmap.html">Roadmap</a> |
+          <a class="nav__link active" href="/marketplace/roadmap.html"
+            >Roadmap</a
+          >
+          |
         </li>
         <li class="nav__item">
           <a class="nav__link" href="/marketplace/contacto.html">Contacto</a>
@@ -61,12 +67,154 @@
         <div class="grid__title">Metas para este año</div>
         <div class="grid__desc">
           <ul>
-            <li>> Creación de redes sociales</li>
-            <li>> Creación de fondo cultural</li>
-            <li>> Alianza con organizaciones</li>
-            <li>> Creación de e-commerce</li>
-            <li>> Campaña de marketing</li>
-            <li>> Grabación de documental</li>
+            <div class="pt-3 accordion" id="accordionExample">
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                  <button
+                    class="accordion-button"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseOne"
+                    aria-expanded="true"
+                    aria-controls="collapseOne"
+                  >
+                    Tarea #1
+                  </button>
+                </h2>
+                <div
+                  id="collapseOne"
+                  class="accordion-collapse collapse show"
+                  aria-labelledby="headingOne"
+                  data-bs-parent="#accordionExample"
+                >
+                  <div class="accordion-body">
+                    Creación de fondo cultura <strong>Completado.</strong>
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingTwo">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseTwo"
+                    aria-expanded="false"
+                    aria-controls="collapseTwo"
+                  >
+                    Tarea #2
+                  </button>
+                </h2>
+                <div
+                  id="collapseTwo"
+                  class="accordion-collapse collapse"
+                  aria-labelledby="headingTwo"
+                  data-bs-parent="#accordionExample"
+                >
+                  <div class="accordion-body">
+                    Alianza con organizaciones. <strong>Completado.</strong>
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingThree">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseThree"
+                    aria-expanded="false"
+                    aria-controls="collapseThree"
+                  >
+                    Tarea #3
+                  </button>
+                </h2>
+                <div
+                  id="collapseThree"
+                  class="accordion-collapse collapse"
+                  aria-labelledby="headingThree"
+                  data-bs-parent="#accordionExample"
+                >
+                  <div class="accordion-body">
+                    Creación de e-commerce. <strong>Completado.</strong>
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingFour">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseFour"
+                    aria-expanded="false"
+                    aria-controls="collapseThree"
+                  >
+                    Tarea #4
+                  </button>
+                </h2>
+                <div
+                  id="collapseFour"
+                  class="accordion-collapse collapse"
+                  aria-labelledby="headingFour"
+                  data-bs-parent="#accordionExample"
+                >
+                  <div class="accordion-body">
+                    Creación de e-commerce. <strong>Completado.</strong>
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingFive">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseFive"
+                    aria-expanded="false"
+                    aria-controls="collapseThree"
+                  >
+                    Tarea #5
+                  </button>
+                </h2>
+                <div
+                  id="collapseFive"
+                  class="accordion-collapse collapse"
+                  aria-labelledby="headingFive"
+                  data-bs-parent="#accordionExample"
+                >
+                  <div class="accordion-body">
+                    Campaña de marketing. <strong>Completado.</strong>
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingSix">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseSix"
+                    aria-expanded="false"
+                    aria-controls="collapseThree"
+                  >
+                    Tarea #6
+                  </button>
+                </h2>
+                <div
+                  id="collapseSix"
+                  class="accordion-collapse collapse"
+                  aria-labelledby="headingSix"
+                  data-bs-parent="#accordionExample"
+                >
+                  <div class="accordion-body">
+                    Grabación de documental. <strong>En progreso.</strong>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <li>Próximamente... colaboración con Menchaca Studio</li>
           </ul>
         </div>
         <div class="grid__footer">Fecha destinada de entrega: 12/02/2026</div>

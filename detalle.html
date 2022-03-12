@@ -2,7 +2,10 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Ve a detalle los alebrijes que ofrece el marketplace de arte mexicano número uno.">
+    <meta
+      name="description"
+      content="Ve a detalle los alebrijes que ofrece el marketplace de arte mexicano número uno."
+    />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Marketplace</title>
@@ -14,6 +17,7 @@
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
       crossorigin="anonymous"
     />
+
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
@@ -35,10 +39,16 @@
           <a class="nav__link" href="/marketplace/index.html">Inicio</a> |
         </li>
         <li class="nav__item">
-          <a class="nav__link" href="/marketplace/categorias.html">Categorías</a> |
+          <a class="nav__link" href="/marketplace/categorias.html"
+            >Categorías</a
+          >
+          |
         </li>
         <li class="nav__item">
-          <a class="nav__link active" href="/marketplace/detalle.html">Detalle</a> |
+          <a class="nav__link active" href="/marketplace/detalle.html"
+            >Detalle</a
+          >
+          |
         </li>
         <li class="nav__item">
           <a class="nav__link" href="/marketplace/roadmap.html">Roadmap</a> |
@@ -83,6 +93,20 @@
           </div>
           <div class="col-3">
             <div class="alebrije-5"></div>
+          </div>
+
+          <div class="row text-center">
+            <div class="col mt-5">
+              <button
+                type="button"
+                id="myInput"
+                class="text-uppercase mt-3 btn btn-primary"
+                data-bs-toggle="modal"
+                data-bs-target="#myModal"
+              >
+                comprar
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -180,5 +204,78 @@
         </ul>
       </div>
     </footer>
+    <div
+      class="modal fade"
+      id="myModal"
+      tabindex="1"
+      aria-labelledby="myModal"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div
+              id="carouselExampleControls"
+              class="carousel slide"
+             
+            >
+              <div class="carousel-inner my-2">
+                <div class="carousel-item active">
+                  <div class="alebrije-4 alebrije--bigger"></div></div>
+                <div class="carousel-item">
+                  <div class="alebrije-5 alebrije--bigger"></div></div>
+                <div class="carousel-item">
+                  <div class="alebrije-3 "></div></div>
+                </div>
+              </div>
+              <button
+                class="carousel-control-prev"
+                type="button"
+                data-bs-target="#carouselExampleControls"
+                data-bs-slide="prev"
+              >
+                <span
+                  class="carousel-control-prev-icon"
+                  aria-hidden="true"
+                ></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button
+                class="carousel-control-next"
+                type="button"
+                data-bs-target="#carouselExampleControls"
+                data-bs-slide="next"
+              >
+                <span
+                  class="carousel-control-next-icon"
+                  aria-hidden="true"
+                ></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Cerrar
+            </button>
+            <button type="button" class="btn btn-success">Comprar</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
+  <script></script>
 </html>

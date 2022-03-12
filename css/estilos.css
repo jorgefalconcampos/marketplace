@@ -335,6 +335,9 @@ main {
   /* Do not repeat the image */
   background-size: cover; }
 
+.alebrije--bigger {
+  height: 330px; }
+
 .form-container {
   margin: 0 0 5rem; }
 

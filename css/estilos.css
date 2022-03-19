@@ -161,13 +161,14 @@ main {
   list-style: disc; }
 
 .footer--center {
-  text-align: center;
-  margin: 1rem 0; }
+  text-align: center; }
+  @media (min-width: 991.98px) {
+    .footer--center * {
+      margin: 0rem 1rem; } }
   .footer--center * {
     color: #797979 !important;
     border-radius: 10px;
-    padding: 8px 10px 8px 10px;
-    margin: 0 1rem; }
+    padding: 8px 10px 8px 10px; }
 
 .footer__sm li i:hover {
   cursor: pointer;
@@ -251,6 +252,10 @@ main {
     background-color: #d544e2;
     box-shadow: 0px 2px 20px 2px #b334be; }
 
+@media (max-width: 991.98px) {
+  .nav__item {
+    padding: 1rem; } }
+
 .nav__item a {
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px; }
@@ -286,54 +291,59 @@ main {
     color: #e2e2e2; }
 
 .alebrije-1 {
-  width: 100%;
-  height: 200px;
-  background-image: url("../static/img/alebrije1.png");
+  height: 10px;
   background-position: center;
   /* Center the image */
   background-repeat: no-repeat;
   /* Do not repeat the image */
   background-size: cover; }
+  .alebrije-1 img {
+    background-color: red;
+    background-image: url("../static/img/alebrije1.png"); }
 
 .alebrije-2 {
-  width: 100%;
-  height: 200px;
-  background-image: url("../static/img/alebrije2.png");
+  height: 10px;
   background-position: center;
   /* Center the image */
   background-repeat: no-repeat;
   /* Do not repeat the image */
   background-size: cover; }
+  .alebrije-2 img {
+    background-color: red;
+    background-image: url("../static/img/alebrije2.png"); }
 
 .alebrije-3 {
-  width: 100%;
-  height: 200px;
-  background-image: url("../static/img/alebrije3.png");
+  height: 10px;
   background-position: center;
   /* Center the image */
   background-repeat: no-repeat;
   /* Do not repeat the image */
   background-size: cover; }
+  .alebrije-3 img {
+    background-color: red;
+    background-image: url("../static/img/alebrije3.png"); }
 
 .alebrije-4 {
-  width: 100%;
-  height: 200px;
-  background-image: url("../static/img/alebrije4.png");
+  height: 10px;
   background-position: center;
   /* Center the image */
   background-repeat: no-repeat;
   /* Do not repeat the image */
   background-size: cover; }
+  .alebrije-4 img {
+    background-color: red;
+    background-image: url("../static/img/alebrije4.png"); }
 
 .alebrije-5 {
-  width: 100%;
-  height: 200px;
-  background-image: url("../static/img/alebrije5.png");
+  height: 10px;
   background-position: center;
   /* Center the image */
   background-repeat: no-repeat;
   /* Do not repeat the image */
   background-size: cover; }
+  .alebrije-5 img {
+    background-color: red;
+    background-image: url("../static/img/alebrije5.png"); }
 
 .alebrije--bigger {
   height: 330px; }

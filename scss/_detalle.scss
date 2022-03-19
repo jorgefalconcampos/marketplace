@@ -1,9 +1,13 @@
 
 @each $item in 1,2,3,4,5 {
     .alebrije-#{$item} {
-        width: 100%;
-        height: 200px;
-        background-image: url('../static/img/alebrije#{$item}.png');
+
+        img {
+            background-color: red;
+            background-image: url('../static/img/alebrije#{$item}.png');
+        }
+        height: 10px;
+        // height: 200px;
         background-position: center; /* Center the image */
         background-repeat: no-repeat; /* Do not repeat the image */
         background-size: cover;

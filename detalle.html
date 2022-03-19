@@ -33,36 +33,53 @@
     />
   </head>
   <body class="waves">
-    <nav>
-      <ul class="nav">
-        <li class="nav__item">
-          <a class="nav__link" href="/marketplace/index.html">Inicio</a> |
-        </li>
-        <li class="nav__item">
-          <a class="nav__link" href="/marketplace/categorias.html"
-            >Categorías</a
-          >
-          |
-        </li>
-        <li class="nav__item">
-          <a class="nav__link active" href="/marketplace/detalle.html"
-            >Detalle</a
-          >
-          |
-        </li>
-        <li class="nav__item">
-          <a class="nav__link" href="/marketplace/roadmap.html">Roadmap</a> |
-        </li>
-        <li class="nav__item">
-          <a class="nav__link" href="/marketplace/contacto.html">Contacto</a>
-          <ul>
-            <li class="nav__sublink">
-              <a href="/marketplace/contacto.html">Formulario</a>
+    <nav class="nav navbar navbar-expand-lg navbar-dark">
+      <div class="container-fluid">
+        <button
+          class="navbar-toggler center my-3"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav center">
+            <li class="nav__item">
+              <a class="nav__link" href="/marketplace/index.html">Inicio</a>
             </li>
-            <li class="nav__sublink"><a href="tel:123456789">Teléfono</a></li>
+            <li class="nav__item">
+              <a class="nav__link" href="/marketplace/categorias.html"
+                >Categorías</a
+              >
+            </li>
+            <li class="nav__item">
+              <a class="nav__link active" href="/marketplace/detalle.html"
+                >Detalle</a
+              >
+            </li>
+            <li class="nav__item">
+              <a class="nav__link" href="/marketplace/roadmap.html">Roadmap</a>
+            </li>
+            <li class="nav__item">
+              <a class="nav__link" href="/marketplace/contacto.html"
+                >Contacto</a
+              >
+              <ul>
+                <li class="nav__sublink">
+                  <a href="/marketplace/contacto.html">Formulario</a>
+                </li>
+                <li class="nav__sublink">
+                  <a href="tel:123456789">Teléfono</a>
+                </li>
+              </ul>
+            </li>
           </ul>
-        </li>
-      </ul>
+        </div>
+      </div>
     </nav>
     <main>
       <div class="glass">
@@ -82,17 +99,17 @@
 
         <div class="row py-5">
           <h1 class="text-center mb-5">Imágenes</h1>
-          <div class="col-3 m">
-            <div class="alebrije-1"></div>
+          <div class="col-3">
+            <img class="img-fluid" src="./static/img/alebrije1.png" alt="" />
           </div>
           <div class="col-3">
-            <div class="alebrije-2"></div>
+            <img class="img-fluid" src="./static/img/alebrije2.png" alt="" />
           </div>
           <div class="col-3">
-            <div class="alebrije-4"></div>
+            <img class="img-fluid" src="./static/img/alebrije5.png" alt="" />
           </div>
           <div class="col-3">
-            <div class="alebrije-5"></div>
+            <img class="img-fluid" src="./static/img/alebrije4.png" alt="" />
           </div>
 
           <div class="row text-center">
@@ -223,56 +240,57 @@
             ></button>
           </div>
           <div class="modal-body">
-            <div
-              id="carouselExampleControls"
-              class="carousel slide"
-             
-            >
+            <div id="carouselExampleControls" class="carousel slide">
               <div class="carousel-inner my-2">
                 <div class="carousel-item active">
-                  <div class="alebrije-4 alebrije--bigger"></div></div>
+                  <img class="img-fluid" src="./static/img/alebrije1.png" alt="">
+                </div>
                 <div class="carousel-item">
-                  <div class="alebrije-5 alebrije--bigger"></div></div>
+                  <img class="img-fluid" src="./static/img/alebrije3.png" alt="">
+                </div>
                 <div class="carousel-item">
-                  <div class="alebrije-3 "></div></div>
+                  <img class="img-fluid" src="./static/img/alebrije2.png" alt="">
+                </div>
+                <div class="carousel-item">
+                  <img class="img-fluid" src="./static/img/alebrije5.png" alt="">
                 </div>
               </div>
-              <button
-                class="carousel-control-prev"
-                type="button"
-                data-bs-target="#carouselExampleControls"
-                data-bs-slide="prev"
-              >
-                <span
-                  class="carousel-control-prev-icon"
-                  aria-hidden="true"
-                ></span>
-                <span class="visually-hidden">Previous</span>
-              </button>
-              <button
-                class="carousel-control-next"
-                type="button"
-                data-bs-target="#carouselExampleControls"
-                data-bs-slide="next"
-              >
-                <span
-                  class="carousel-control-next-icon"
-                  aria-hidden="true"
-                ></span>
-                <span class="visually-hidden">Next</span>
-              </button>
             </div>
-          </div>
-          <div class="modal-footer">
             <button
+              class="carousel-control-prev"
               type="button"
-              class="btn btn-secondary"
-              data-bs-dismiss="modal"
+              data-bs-target="#carouselExampleControls"
+              data-bs-slide="prev"
             >
-              Cerrar
+              <span
+                class="carousel-control-prev-icon"
+                aria-hidden="true"
+              ></span>
+              <span class="visually-hidden">Previous</span>
             </button>
-            <button type="button" class="btn btn-success">Comprar</button>
+            <button
+              class="carousel-control-next"
+              type="button"
+              data-bs-target="#carouselExampleControls"
+              data-bs-slide="next"
+            >
+              <span
+                class="carousel-control-next-icon"
+                aria-hidden="true"
+              ></span>
+              <span class="visually-hidden">Next</span>
+            </button>
           </div>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Cerrar
+          </button>
+          <button type="button" class="btn btn-success">Comprar</button>
         </div>
       </div>
     </div>

@@ -11,6 +11,15 @@ let total = 0;
 let terminar = false;
 
 
+
+let btn = document.getElementById("btn_comprar");
+
+btn.addEventListener("click", () => {
+    let carro_icono = document.getElementById("icono_carrito");
+    carro_icono.innerHTML = "&nbsp; <span id='articulos_carrito'>1</span>&nbsp;";
+    alert("¡Producto agregado al carrito!")
+});
+
 class Articulo {
     constructor(id, sku, nombre, precio, impuestos, descripcion) {
         this.id = id;

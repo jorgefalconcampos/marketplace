@@ -12,20 +12,19 @@ const archivoJson = {
             "articulo1_leon_1.png",
             "articulo1_leon_2.png",
             "articulo1_leon_3.png",
-            "articulo1_leon_4.png",
-            "articulo1_leon_5.png",
+            "articulo1_leon_4.png"
         ]
     },
-    "articulo_2" : {
-        "nombre": "Alebrije de jaguar",
-        "detalle": "Alebrije con figura tallada de jaguar",
-        "composición": "Madera",
-        "medidas": "29x12x90cm",
-        "precio": 790,
-        "divisa": "MXN",
-        "imagenes": [
-        ]
-    }
+    // "articulo_2" : {
+    //     "nombre": "Alebrije de jaguar",
+    //     "detalle": "Alebrije con figura tallada de jaguar",
+    //     "composición": "Madera",
+    //     "medidas": "29x12x90cm",
+    //     "precio": 790,
+    //     "divisa": "MXN",
+    //     "imagenes": [
+    //     ]
+    // }
 }
 
 
@@ -69,7 +68,7 @@ for (const key in archivoJson) {
             <div class="col mt-5">
               <button
                 type="button"
-                id="btn_comprar_${contenido.id}"
+                id="btn_comprar"
                 class="text-uppercase mt-3 btn btn-primary"
               >
                 comprar
@@ -95,23 +94,21 @@ for (const key in archivoJson) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 let btn = document.getElementById("btn_comprar");
 
 btn.addEventListener("click", () => {
     let carro_icono = document.getElementById("icono_carrito");
     carro_icono.innerHTML = "&nbsp; <span id='articulos_carrito'>1</span>&nbsp;";
-    alert("¡Producto agregado al carrito!")
+    alert("¡Producto agregado al carrito!");
+
+    localStorage.setItem("articulo", JSON.stringify(archivoJson.articulo_1));
+
+
+
+
+    
+
+
 });
 
 class Articulo {

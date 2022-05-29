@@ -1,0 +1,17 @@
+{
+    "articulo_1" : {
+        "id": 12345,
+        "nombre": "Alebrije de león",
+        "detalle": "Alebrije con figura tallada de león",
+        "composición": "Madera",
+        "medidas": "24x19x90cm",
+        "precio": 390,
+        "divisa": "MXN",
+        "imagenes": [
+            "articulo1_leon_1.png",
+            "articulo1_leon_2.png",
+            "articulo1_leon_3.png",
+            "articulo1_leon_4.png"
+        ]
+    }
+}

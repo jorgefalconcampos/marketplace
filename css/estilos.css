@@ -196,7 +196,9 @@ main {
   grid-template-columns: 45px repeat(3, 1fr);
   grid-template-rows: 40px auto 50px;
   grid-gap: 10px;
-  grid-template-areas: "roadmap   header  header header" "roadmap     main  main   main" "roadmap   footer  footer footer"; }
+  grid-template-areas: "roadmap   header  header header"
+ "roadmap     main  main   main"
+ "roadmap   footer  footer footer"; }
 
 .grid__title {
   font-size: 35px;
@@ -297,7 +299,7 @@ main {
   background-repeat: no-repeat;
   /* Do not repeat the image */
   background-size: cover; }
-  .alebrije-1 img {
+  .alebrije-1 img {articulo1_leon_1
     background-color: red;
     background-image: url("../static/img/alebrije1.png"); }
 
@@ -310,7 +312,7 @@ main {
   background-size: cover; }
   .alebrije-2 img {
     background-color: red;
-    background-image: url("../static/img/alebrije2.png"); }
+    background-image: url("../static/img/articulo1_leon_2.png"); }
 
 .alebrije-3 {
   height: 10px;
@@ -321,7 +323,7 @@ main {
   background-size: cover; }
   .alebrije-3 img {
     background-color: red;
-    background-image: url("../static/img/alebrije3.png"); }
+    background-image: url("../static/img/articulo1_leon_3.png"); }
 
 .alebrije-4 {
   height: 10px;
@@ -332,7 +334,7 @@ main {
   background-size: cover; }
   .alebrije-4 img {
     background-color: red;
-    background-image: url("../static/img/alebrije4.png"); }
+    background-image: url("../static/img/articulo1_leon_4.png"); }
 
 .alebrije-5 {
   height: 10px;
@@ -343,7 +345,7 @@ main {
   background-size: cover; }
   .alebrije-5 img {
     background-color: red;
-    background-image: url("../static/img/alebrije5.png"); }
+    background-image: url("../static/img/articulo1_leon_5.png"); }
 
 .alebrije--bigger {
   height: 330px; }

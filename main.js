@@ -1,14 +1,108 @@
 
-/** *
- Problema: El usuario puede agregar al carrito uno o varios artículos, y se debe mostrar
- el total de todos los artículos
- * */ 
+const archivoJson = {
+    "articulo_1" : {
+        "id": 1,
+        "nombre": "Alebrije de león",
+        "detalle": "Alebrije con figura tallada de león",
+        "composición": "Madera",
+        "medidas": "24x19x90cm",
+        "precio": 390,
+        "divisa": "MXN",
+        "imagenes": [
+            "articulo1_leon_1.png",
+            "articulo1_leon_2.png",
+            "articulo1_leon_3.png",
+            "articulo1_leon_4.png",
+            "articulo1_leon_5.png",
+        ]
+    },
+    "articulo_2" : {
+        "nombre": "Alebrije de jaguar",
+        "detalle": "Alebrije con figura tallada de jaguar",
+        "composición": "Madera",
+        "medidas": "29x12x90cm",
+        "precio": 790,
+        "divisa": "MXN",
+        "imagenes": [
+        ]
+    }
+}
+
 
 const IVA = 16;
 let articulos_disponibles = [];
 let articulos = []; // articulos que el usuario agrega al carrito
 let total = 0;
 let terminar = false;
+
+
+
+let placeholder = document.getElementById("elementos_placeholder");
+
+
+// añadiendo productos al DOM dinámicamente
+for (const key in archivoJson) {
+    const contenido = archivoJson[key];
+    const imagenes = contenido.imagenes;
+
+    // agregando info del producto
+    placeholder.innerHTML += `
+        <div class="table-title">${contenido.nombre}</div>
+        <div class="row table-head">
+          <div class="column">Detalle</div>
+          <div class="column">Composición</div>
+          <div class="column">Medidas</div>
+          <div class="column">Precio</div>
+        </div>
+        <div class="row">
+          <div class="column">${contenido.detalle}</div>
+          <div class="column">${contenido.composición}</div>
+          <div class="column">${contenido.medidas}</div>
+          <div class="column">${contenido.precio} ${contenido.divisa}</div>
+        </div>
+        
+        <div class="row py-5">
+          <h1 class="text-center mb-5">Imágenes</h1>
+          <div class="row" id="placeholder_imagenes_${key}">
+          </div>
+          <div class="row text-center">
+            <div class="col mt-5">
+              <button
+                type="button"
+                id="btn_comprar_${contenido.id}"
+                class="text-uppercase mt-3 btn btn-primary"
+              >
+                comprar
+              </button>
+            </div>
+          </div>
+        </div>
+        <hr><hr><hr>
+    `;
+
+    // agregando las imágenes
+    for (let i=0; i<imagenes.length; i++) {
+        document.getElementById(`placeholder_imagenes_${key}`).innerHTML += `
+        <div class="col-3">
+            <img class="img-fluid" src="./static/img/${imagenes[i]}" alt="" />
+        </div>
+        `;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -49,63 +143,77 @@ let articulo_2 = new Articulo(487, "AP826MSNDGN2", "Alebrije de toro", 320, IVA,
 
 articulos_disponibles.push(articulo_1, articulo_2);
 
-function preguntarCliente() {
 
-    const longitud = articulos_disponibles.length;
 
-    alert(`Actualmente, tenemos a la venta ${longitud} artículos especiales:`);
 
-    for (let item=0; item<longitud; item++){
-        alert(`Artículo ${item+1}: \n\n ${JSON.stringify(articulos_disponibles[item])}`);
-    }
 
-    let articulo = Number(prompt(`¿Qué artcículo de los ${longitud} deseas agregar?`));
 
-    switch(articulo) {
-        case 1:
-            articulos.push(articulo_1);
-            alert(`¡El ${articulo_1["nombre"]} es una buena elección!`);
-        break;
 
-        case 2:
-            articulos.push(articulo_2);
-            alert(`¡El ${articulo_2["nombre"]} es una buena elección!`);
-        break;
 
-        default:
-            alert("Al parecer no has agregado artículos a tu carrito o esta opción no está disponible...")
-        break;
-    }
+
+
+
+
+
+
+
+// function preguntarCliente() {
+
+//     const longitud = articulos_disponibles.length;
+
+//     alert(`Actualmente, tenemos a la venta ${longitud} artículos especiales:`);
+
+//     for (let item=0; item<longitud; item++){
+//         alert(`Artículo ${item+1}: \n\n ${JSON.stringify(articulos_disponibles[item])}`);
+//     }
+
+//     let articulo = Number(prompt(`¿Qué artcículo de los ${longitud} deseas agregar?`));
+
+//     switch(articulo) {
+//         case 1:
+//             articulos.push(articulo_1);
+//             alert(`¡El ${articulo_1["nombre"]} es una buena elección!`);
+//         break;
+
+//         case 2:
+//             articulos.push(articulo_2);
+//             alert(`¡El ${articulo_2["nombre"]} es una buena elección!`);
+//         break;
+
+//         default:
+//             alert("Al parecer no has agregado artículos a tu carrito o esta opción no está disponible...")
+//         break;
+//     }
 
     
-    const carrito = new Carrito(articulos, false, 0); // no crear un nuevo carrito, si no verificar si existe uno y agregarlo
+//     const carrito = new Carrito(articulos, false, 0); // no crear un nuevo carrito, si no verificar si existe uno y agregarlo
     
-    alert("Tu carrito se ve así hasta ahora: ");
+//     alert("Tu carrito se ve así hasta ahora: ");
 
-    console.log(carrito)
+//     console.log(carrito)
 
-    for(let art=0; art<carrito["articulos"].length; art++){
-        alert(JSON.stringify(carrito["articulos"][art]));
-    }
+//     for(let art=0; art<carrito["articulos"].length; art++){
+//         alert(JSON.stringify(carrito["articulos"][art]));
+//     }
 
-    total = 0; // solucionado "reiniciando" el total
+//     total = 0; // solucionado "reiniciando" el total
 
-    for(let item=0; item<carrito["articulos"].length; item++){
-        total += carrito["articulos"][item].precio; // una vez reiniciado, se hace la suma
-    }
+//     for(let item=0; item<carrito["articulos"].length; item++){
+//         total += carrito["articulos"][item].precio; // una vez reiniciado, se hace la suma
+//     }
 
-    alert("Tu total es de: " + total)
+//     alert("Tu total es de: " + total)
 
-    terminar = JSON.parse(prompt("¿Deseas finalizar? (escribe 'false' sin comillas para agregar otro, o 'true' para finalizar)"));
+//     terminar = JSON.parse(prompt("¿Deseas finalizar? (escribe 'false' sin comillas para agregar otro, o 'true' para finalizar)"));
 
-}
+// }
 
-let nombre = prompt("¡Hola! ¿Me puedes dar tu nombre?");
-alert(`Hola ${nombre}, estamos encantados de tenerte en nuestra tienda.`)
+// let nombre = prompt("¡Hola! ¿Me puedes dar tu nombre?");
+// alert(`Hola ${nombre}, estamos encantados de tenerte en nuestra tienda.`)
 
 
-while(terminar === false) {
-    preguntarCliente();
-}
+// while(terminar === false) {
+//     preguntarCliente();
+// }
 
 

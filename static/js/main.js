@@ -15,16 +15,20 @@ const archivoJson = {
             "articulo1_leon_4.png"
         ]
     },
-    // "articulo_2" : {
-    //     "nombre": "Alebrije de jaguar",
-    //     "detalle": "Alebrije con figura tallada de jaguar",
-    //     "composición": "Madera",
-    //     "medidas": "29x12x90cm",
-    //     "precio": 790,
-    //     "divisa": "MXN",
-    //     "imagenes": [
-    //     ]
-    // }
+    "articulo_2" : {
+        "nombre": "Alebrije de zorro",
+        "detalle": "Alebrije con figura tallada de zorro",
+        "composición": "Madera",
+        "medidas": "29x12x90cm",
+        "precio": 790,
+        "divisa": "MXN",
+        "imagenes": [
+          "articulo2_zorro_1.png",
+          "articulo2_zorro_2.png",
+          "articulo2_zorro_3.png",
+          "articulo2_zorro_4.png",
+        ]
+    }
 }
 
 
@@ -90,16 +94,19 @@ for (const key in archivoJson) {
 }
 
 
-
-
-
-
 let btn = document.getElementById("btn_comprar");
 
 btn.addEventListener("click", () => {
     let carro_icono = document.getElementById("icono_carrito");
     carro_icono.innerHTML = "&nbsp; <span id='articulos_carrito'>1</span>&nbsp;";
-    alert("¡Producto agregado al carrito!");
+
+    Swal.fire({
+      icon: 'success',
+      title: 'Muy buena elección!',
+      text: 'Producto agregado al carrito!',
+      footer: '<a href="/marketplace/cart.html">Ver carrito</a>'
+    })
+
 
     localStorage.setItem("articulo", JSON.stringify(archivoJson.articulo_1));
 

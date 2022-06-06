@@ -1,35 +1,35 @@
 
-const archivoJson = {
-    "articulo_1" : {
-        "id": 1,
-        "nombre": "Alebrije de león",
-        "detalle": "Alebrije con figura tallada de león",
-        "composición": "Madera",
-        "medidas": "24x19x90cm",
-        "precio": 390,
-        "divisa": "MXN",
-        "imagenes": [
-            "articulo1_leon_1.png",
-            "articulo1_leon_2.png",
-            "articulo1_leon_3.png",
-            "articulo1_leon_4.png"
-        ]
-    },
-    "articulo_2" : {
-        "nombre": "Alebrije de zorro",
-        "detalle": "Alebrije con figura tallada de zorro",
-        "composición": "Madera",
-        "medidas": "29x12x90cm",
-        "precio": 790,
-        "divisa": "MXN",
-        "imagenes": [
-          "articulo2_zorro_1.png",
-          "articulo2_zorro_2.png",
-          "articulo2_zorro_3.png",
-          "articulo2_zorro_4.png",
-        ]
-    }
-}
+// const data = {
+//     "articulo_1" : {
+//         "id": 1,
+//         "nombre": "Alebrije de león",
+//         "detalle": "Alebrije con figura tallada de león",
+//         "composición": "Madera",
+//         "medidas": "24x19x90cm",
+//         "precio": 390,
+//         "divisa": "MXN",
+//         "imagenes": [
+//             "articulo1_leon_1.png",
+//             "articulo1_leon_2.png",
+//             "articulo1_leon_3.png",
+//             "articulo1_leon_4.png"
+//         ]
+//     },
+//     "articulo_2" : {
+//         "nombre": "Alebrije de zorro",
+//         "detalle": "Alebrije con figura tallada de zorro",
+//         "composición": "Madera",
+//         "medidas": "29x12x90cm",
+//         "precio": 790,
+//         "divisa": "MXN",
+//         "imagenes": [
+//           "articulo2_zorro_1.png",
+//           "articulo2_zorro_2.png",
+//           "articulo2_zorro_3.png",
+//           "articulo2_zorro_4.png",
+//         ]
+//     }
+// }
 
 
 const IVA = 16;
@@ -43,95 +43,152 @@ let terminar = false;
 let placeholder = document.getElementById("elementos_placeholder");
 
 
-// añadiendo productos al DOM dinámicamente
-for (const key in archivoJson) {
-    const contenido = archivoJson[key];
-    const imagenes = contenido.imagenes;
 
-    // agregando info del producto
-    placeholder.innerHTML += `
-        <div class="table-title">${contenido.nombre}</div>
-        <div class="row table-head">
-          <div class="column">Detalle</div>
-          <div class="column">Composición</div>
-          <div class="column">Medidas</div>
-          <div class="column">Precio</div>
-        </div>
-        <div class="row">
-          <div class="column">${contenido.detalle}</div>
-          <div class="column">${contenido.composición}</div>
-          <div class="column">${contenido.medidas}</div>
-          <div class="column">${contenido.precio} ${contenido.divisa}</div>
-        </div>
-        
-        <div class="row py-5">
-          <h1 class="text-center mb-5">Imágenes</h1>
-          <div class="row" id="placeholder_imagenes_${key}">
+fetch("./static/productos.json")
+  .then((resp) => resp.json())
+  // añadiendo productos al DOM dinámicamente
+  .then((data) => {
+    for (const key in data) {
+      const contenido = data[key];
+      const imagenes = contenido.imagenes;
+
+      // agregando info del producto
+      placeholder.innerHTML += `
+          <div class="table-title">${contenido.nombre}</div>
+
+          
+          <div class="row table-head">
+            <div class="column">Detalle</div>
+            <div class="column">Composición</div>
+            <div class="column">Medidas</div>
+            <div class="column">Precio</div>
           </div>
-          <div class="row text-center">
-            <div class="col mt-5">
-              <button
-                type="button"
-                id="btn_comprar"
-                class="text-uppercase mt-3 btn btn-primary"
-              >
-                comprar
-              </button>
+          <div class="row">
+            <div class="column">${contenido.detalle}</div>
+            <div class="column">${contenido.composición}</div>
+            <div class="column">${contenido.medidas}</div>
+            <div class="column">${contenido.precio} ${contenido.divisa}</div>
+          </div>
+          
+          <div class="row py-5">
+            <h1 class="text-center mb-5">Imágenes</h1>
+            <div class="row" id="placeholder_imagenes_${key}">
+            </div>
+            <div class="row text-center">
+              <div class="col mt-5">
+                <button
+                  type="button"
+                  id="btn_comprar_${contenido.id}"
+                  data-id="${contenido.id}"
+                  class="text-uppercase mt-3 btn btn-primary"
+                >
+                  comprar
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-        <hr><hr><hr>
-    `;
+          <hr><hr><hr>
+      `;
+  
+      // agregando las imágenes
+      for (let i=0; i<imagenes.length; i++) {
+          document.getElementById(`placeholder_imagenes_${key}`).innerHTML += `
+          <div class="col-3">
+              <img class="img-fluid" src="./static/img/${imagenes[i]}" alt="" />
+          </div>
+          `;
+      }
+  }})
+  .then(() => {
 
-    // agregando las imágenes
-    for (let i=0; i<imagenes.length; i++) {
-        document.getElementById(`placeholder_imagenes_${key}`).innerHTML += `
-        <div class="col-3">
-            <img class="img-fluid" src="./static/img/${imagenes[i]}" alt="" />
-        </div>
-        `;
-    }
-}
+    // creamos un array de elementos que empiecen con "btn_comprar"
+    const botones_comprar = document.querySelectorAll(`[id^="btn_comprar"]`);
 
-
-let btn = document.getElementById("btn_comprar");
-
-btn.addEventListener("click", () => {
-    let carro_icono = document.getElementById("icono_carrito");
-    carro_icono.innerHTML = "&nbsp; <span id='articulos_carrito'>1</span>&nbsp;";
-
-    Swal.fire({
-      icon: 'success',
-      title: 'Muy buena elección!',
-      text: 'Producto agregado al carrito!',
-      footer: '<a href="/marketplace/cart.html">Ver carrito</a>'
+    // para cada uno de los botones, agregamos el eventListener "click"
+    botones_comprar.forEach(btn => {      
+      btn.addEventListener("click", () => {
+        let id_articulo = document.getElementById(btn.id).getAttribute("data-id");
+        createOrUpdateCart(id_articulo, 1); // agregamos el ID del articulo al carrito
+      });
     })
 
 
-    localStorage.setItem("articulo", JSON.stringify(archivoJson.articulo_1));
+    // let btn = document.getElementById("btn_comprar");
+    // btn.addEventListener("click", () => {
+    //   let carro_icono = document.getElementById("icono_carrito");
+    //   carro_icono.innerHTML = "&nbsp; <span id='articulos_carrito'>1</span>&nbsp;";
+      
+    //   Swal.fire({
+    //     icon: 'success',
+    //     title: 'Muy buena elección!',
+    //     text: 'Producto agregado al carrito!',
+    //     footer: '<a href="/marketplace/cart.html">Ver carrito</a>'
+    //   })
+    //   localStorage.setItem("articulo", JSON.stringify(data.articulo_1));
+    // });
 
 
 
+  });
 
-    
+
+  // retorna los datos del producto pasándole un ID
+  async function returnProductData(id) {
+    return fetch("./static/productos.json")
+    .then(resp => resp.json())
+    .then(data => {
+      for (const item in data) {
+        if (data[item].id == id) {
+          return data[item]; }
+      }
+    });
+  }
 
 
-});
+function createOrUpdateCart(id, cantidad) {
+
+  let articulo;
+
+  returnProductData(id).then(r => {
+    articulo = new Articulo(r.id, 
+      r.nombre, r.detalle, r.composicion, 
+      r.medidas, r.precio, r.divisa, r.imagenes, 0.16, cantidad);
+
+      
+      console.log(articulo)
+  });
+
+  
+  Swal.fire({
+    icon: 'success',
+    title: '¡Muy buena elección!',
+    text: "El producto agregado al carrito",
+    footer: '<a href="/marketplace/cart.html">Ver carrito</a>'
+  })
+
+
+}
 
 class Articulo {
-    constructor(id, sku, nombre, precio, impuestos, descripcion) {
+    constructor(id, 
+      nombre, detalle, composicion, 
+      medidas, precio, divisa, imagenes, 
+      impuestos, cantidad) {
         this.id = id;
-        this.sku = sku;
         this.nombre = nombre;
+        this.detalle = detalle;
+        this.composicion = composicion;
+        this.medidas = medidas;
         this.precio = precio;
+        this.divisa = divisa;
+        this.imagenes = imagenes;
         this.impuestos = impuestos;
-        this.descripcion = descripcion;
-        // this.cantidad = 0;
-    }
-
-    agregar(cantidad) {
         this.cantidad = cantidad;
     }
+
+    // agregar(cantidad) {
+    //     this.cantidad = cantidad;
+    // }
 }
 
 class Carrito {

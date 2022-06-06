@@ -32,7 +32,84 @@
 // }
 
 
+
+class Articulo {
+  constructor(id, 
+    nombre, detalle, composicion, 
+    medidas, precio, divisa, imagenes, 
+    impuestos, cantidad) {
+      this.id = id;
+      this.nombre = nombre;
+      this.detalle = detalle;
+      this.composicion = composicion;
+      this.medidas = medidas;
+      this.precio = precio;
+      this.divisa = divisa;
+      this.imagenes = imagenes;
+      this.impuestos = impuestos;
+      this.cantidad = cantidad;
+  }
+
+  // agregar(cantidad) {
+  //     this.cantidad = cantidad;
+  // }
+}
+
+class Carrito {
+constructor(articulos, tieneDescuento, descuento) {
+  this.articulos = [];
+  this.tieneDescuento = tieneDescuento;
+  this.descuento = descuento;
+}
+
+agregarArticulo(articulo) {
+  let yaExiste = carrito.articuloYaEnCarrito(articulo.id);
+
+  if(yaExiste) {
+    console.log("Ya existe... solo habría que actualizar la cantidad");
+  }
+  else {
+    this.articulos.push(articulo)
+  }
+
+}
+
+articuloYaEnCarrito(id) {
+  if (this.articulos.filter(item => item.id == id).length > 0) { return true; }
+}
+
+
+quitarArticulo(id) {
+
+}
+
+calcularTotal() {
+
+}
+
+
+// guarda los datos del carrito en localStorage
+guardarDatosCarrito() {
+
+}
+
+
+actualizarContadorPreview() {
+  // let cantidad = this.articulos.length;
+  // let carro_icono = document.getElementById("icono_carrito");
+  // carro_icono.innerHTML = `&nbsp; <span id='articulos_carrito'>${cantidad}</span>&nbsp;`;
+}
+
+
+}
+
+
 const IVA = 16;
+const carrito = new Carrito();
+
+
+
+
 let articulos_disponibles = [];
 let articulos = []; // articulos que el usuario agrega al carrito
 let total = 0;
@@ -56,7 +133,6 @@ fetch("./static/productos.json")
       placeholder.innerHTML += `
           <div class="table-title">${contenido.nombre}</div>
 
-          
           <div class="row table-head">
             <div class="column">Detalle</div>
             <div class="column">Composición</div>
@@ -152,57 +228,32 @@ function createOrUpdateCart(id, cantidad) {
   returnProductData(id).then(r => {
     articulo = new Articulo(r.id, 
       r.nombre, r.detalle, r.composicion, 
-      r.medidas, r.precio, r.divisa, r.imagenes, 0.16, cantidad);
+      r.medidas, r.precio, r.divisa, r.imagenes, IVA/100, cantidad);
 
-      
+
+      carrito.agregarArticulo(articulo);
+    
+    
+
+
       console.log(articulo)
+      console.log(carrito)
   });
 
   
   Swal.fire({
     icon: 'success',
     title: '¡Muy buena elección!',
-    text: "El producto agregado al carrito",
+    text: "El producto ha sido agregado al carrito",
     footer: '<a href="/marketplace/cart.html">Ver carrito</a>'
   })
 
 
 }
 
-class Articulo {
-    constructor(id, 
-      nombre, detalle, composicion, 
-      medidas, precio, divisa, imagenes, 
-      impuestos, cantidad) {
-        this.id = id;
-        this.nombre = nombre;
-        this.detalle = detalle;
-        this.composicion = composicion;
-        this.medidas = medidas;
-        this.precio = precio;
-        this.divisa = divisa;
-        this.imagenes = imagenes;
-        this.impuestos = impuestos;
-        this.cantidad = cantidad;
-    }
 
-    // agregar(cantidad) {
-    //     this.cantidad = cantidad;
-    // }
-}
 
-class Carrito {
-    constructor(articulos, tieneDescuento, descuento) {
-        this.articulos = articulos;
-        this.tieneDescuento = tieneDescuento;
-        this.descuento = descuento;
-    }
-}
-
-let articulo_1 = new Articulo(123, "P00JHDGNB132", "Alebrije de león", 100, IVA, "Alebrije de Oaxaca hecho a mano, tallado en madera  y pintado con finos detalles.")
-let articulo_2 = new Articulo(487, "AP826MSNDGN2", "Alebrije de toro", 320, IVA, "Alebrije hecho a mano, tallado en madera  y pintado con colores brillantes.")
-
-articulos_disponibles.push(articulo_1, articulo_2);
+// articulos_disponibles.push(articulo_1, articulo_2);
 
 
 

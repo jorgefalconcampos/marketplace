@@ -31,6 +31,26 @@
 //     }
 // }
 
+function consultarLocalStorage(clave) {
+  if (localStorage.getItem(clave) === null) {
+    return false;
+  }
+  else { return localStorage.getItem(clave); }
+}
+
+function guardarLocalStorage(clave, valor) {
+  if (localStorage.getItem(clave) === null) {
+    // no existe en localStorage, entonces lo creamos
+    localStorage.setItem(clave, 1);
+  }
+  else {
+    // si ya existe en localStorage, lo actualizamos     
+    localStorage.setItem(clave, valor);
+  }
+}
+
+
+
 
 
 class Articulo {
@@ -64,13 +84,24 @@ constructor(articulos, tieneDescuento, descuento) {
 
 agregarArticulo(articulo) {
   let yaExiste = carrito.articuloYaEnCarrito(articulo.id);
-
+    
   if(yaExiste) {
-    console.log("Ya existe... solo habría que actualizar la cantidad");
+    // si ya existe, solo habria que actualizar la cantidad
+    for(let i=0; i<this.articulos.length; i++) {
+      if(this.articulos[i].id == articulo.id) {
+        this.articulos[i].cantidad = this.articulos[i].cantidad+1;  // agregamos 1 en cantidad
+      }
+    }
+    console.log(this.articulos)
   }
   else {
     this.articulos.push(articulo)
   }
+
+  let items_en_carrito = parseInt(consultarLocalStorage("items_en_carro"));
+  items_en_carrito != false ? guardarLocalStorage("items_en_carro", items_en_carrito+1) : alert("Este item no está en tu carrito")
+
+  this.actualizarContadorPreview();
 
 }
 
@@ -88,16 +119,10 @@ calcularTotal() {
 }
 
 
-// guarda los datos del carrito en localStorage
-guardarDatosCarrito() {
-
-}
-
-
 actualizarContadorPreview() {
-  // let cantidad = this.articulos.length;
-  // let carro_icono = document.getElementById("icono_carrito");
-  // carro_icono.innerHTML = `&nbsp; <span id='articulos_carrito'>${cantidad}</span>&nbsp;`;
+  let cantidad = parseInt(consultarLocalStorage("items_en_carro"));
+  let carro_icono = document.getElementById("icono_carrito");
+  carro_icono.innerHTML = `&nbsp; <span id='articulos_carrito'>${cantidad}</span>&nbsp;`;
 }
 
 
@@ -233,10 +258,7 @@ function createOrUpdateCart(id, cantidad) {
 
       carrito.agregarArticulo(articulo);
     
-    
-
-
-      console.log(articulo)
+      // console.log(articulo)
       console.log(carrito)
   });
 

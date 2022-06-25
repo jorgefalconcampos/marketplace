@@ -128,96 +128,102 @@ class Carrito {
 const IVA = 16;
 const carrito = new Carrito();
 
+carrito.actualizarContadorPreview();
+
 let articulos_disponibles = [];
 let articulos = []; // articulos que el usuario agrega al carrito
 let total = 0;
 let terminar = false;
 
-let placeholder = document.getElementById("elementos_placeholder");
+cargarElementos();
 
-fetch("./static/productos.json")
-  .then((resp) => resp.json())
-  // añadiendo productos al DOM dinámicamente
-  .then((data) => {
-    for (const key in data) {
-      const contenido = data[key];
-      const imagenes = contenido.imagenes;
+function cargarElementos() {
+  let placeholder = document.getElementById("elementos_placeholder");
 
-      // agregando info del producto
-      placeholder.innerHTML += `
-          <div class="table-title">${contenido.nombre}</div>
+  fetch("./static/productos.json")
+    .then((resp) => resp.json())
+    // añadiendo productos al DOM dinámicamente
+    .then((data) => {
+      for (const key in data) {
+        const contenido = data[key];
+        const imagenes = contenido.imagenes;
 
-          <div class="row table-head">
-            <div class="column">Detalle</div>
-            <div class="column">Composición</div>
-            <div class="column">Medidas</div>
-            <div class="column">Precio</div>
-          </div>
-          <div class="row">
-            <div class="column">${contenido.detalle}</div>
-            <div class="column">${contenido.composición}</div>
-            <div class="column">${contenido.medidas}</div>
-            <div class="column">${contenido.precio} ${contenido.divisa}</div>
-          </div>
-          
-          <div class="row py-5">
-            <h1 class="text-center mb-5">Imágenes</h1>
-            <div class="row" id="placeholder_imagenes_${key}">
+        // agregando info del producto
+        placeholder.innerHTML += `
+            <div class="table-title">${contenido.nombre}</div>
+
+            <div class="row table-head">
+              <div class="column">Detalle</div>
+              <div class="column">Composición</div>
+              <div class="column">Medidas</div>
+              <div class="column">Precio</div>
             </div>
-            <div class="row text-center">
-              <div class="col mt-5">
-                <button
-                  type="button"
-                  id="btn_comprar_${contenido.id}"
-                  data-id="${contenido.id}"
-                  class="text-uppercase mt-3 btn btn-primary"
-                >
-                  comprar
-                </button>
+            <div class="row">
+              <div class="column">${contenido.detalle}</div>
+              <div class="column">${contenido.composición}</div>
+              <div class="column">${contenido.medidas}</div>
+              <div class="column">${contenido.precio} ${contenido.divisa}</div>
+            </div>
+            
+            <div class="row py-5">
+              <h1 class="text-center mb-5">Imágenes</h1>
+              <div class="row" id="placeholder_imagenes_${key}">
+              </div>
+              <div class="row text-center">
+                <div class="col mt-5">
+                  <button
+                    type="button"
+                    id="btn_comprar_${contenido.id}"
+                    data-id="${contenido.id}"
+                    class="text-uppercase mt-3 btn btn-primary"
+                  >
+                    comprar
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
-          <hr><hr><hr>
-      `;
+            <hr><hr><hr>
+        `;
 
-      // agregando las imágenes
-      for (let i = 0; i < imagenes.length; i++) {
-        document.getElementById(`placeholder_imagenes_${key}`).innerHTML += `
-          <div class="col-3">
-              <img class="img-fluid" src="./static/img/${imagenes[i]}" alt="" />
-          </div>
-          `;
+        // agregando las imágenes
+        for (let i = 0; i < imagenes.length; i++) {
+          document.getElementById(`placeholder_imagenes_${key}`).innerHTML += `
+            <div class="col-3">
+                <img class="img-fluid" src="./static/img/${imagenes[i]}" alt="" />
+            </div>
+            `;
+        }
       }
-    }
-  })
-  .then(() => {
-    // creamos un array de elementos que empiecen con "btn_comprar"
-    const botones_comprar = document.querySelectorAll(`[id^="btn_comprar"]`);
+    })
+    .then(() => {
+      // creamos un array de elementos que empiecen con "btn_comprar"
+      const botones_comprar = document.querySelectorAll(`[id^="btn_comprar"]`);
 
-    // para cada uno de los botones, agregamos el eventListener "click"
-    botones_comprar.forEach((btn) => {
-      btn.addEventListener("click", () => {
-        let id_articulo = document
-          .getElementById(btn.id)
-          .getAttribute("data-id");
-        createOrUpdateCart(id_articulo, 1); // agregamos el ID del articulo al carrito
+      // para cada uno de los botones, agregamos el eventListener "click"
+      botones_comprar.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          let id_articulo = document
+            .getElementById(btn.id)
+            .getAttribute("data-id");
+          createOrUpdateCart(id_articulo, 1); // agregamos el ID del articulo al carrito
+        });
       });
+
+      // let btn = document.getElementById("btn_comprar");
+      // btn.addEventListener("click", () => {
+      //   let carro_icono = document.getElementById("icono_carrito");
+      //   carro_icono.innerHTML = "&nbsp; <span id='articulos_carrito'>1</span>&nbsp;";
+
+      //   Swal.fire({
+      //     icon: 'success',
+      //     title: 'Muy buena elección!',
+      //     text: 'Producto agregado al carrito!',
+      //     footer: '<a href="/marketplace/cart.html">Ver carrito</a>'
+      //   })
+      //   localStorage.setItem("articulo", JSON.stringify(data.articulo_1));
+      // });
     });
-
-    // let btn = document.getElementById("btn_comprar");
-    // btn.addEventListener("click", () => {
-    //   let carro_icono = document.getElementById("icono_carrito");
-    //   carro_icono.innerHTML = "&nbsp; <span id='articulos_carrito'>1</span>&nbsp;";
-
-    //   Swal.fire({
-    //     icon: 'success',
-    //     title: 'Muy buena elección!',
-    //     text: 'Producto agregado al carrito!',
-    //     footer: '<a href="/marketplace/cart.html">Ver carrito</a>'
-    //   })
-    //   localStorage.setItem("articulo", JSON.stringify(data.articulo_1));
-    // });
-  });
+}
 
 // retorna los datos del producto pasándole un ID
 async function returnProductData(id) {
@@ -322,4 +328,4 @@ function createOrUpdateCart(id, cantidad) {
 //     preguntarCliente();
 // }
 
-// export { consultarLocalStorage }
+export  { consultarLocalStorage }

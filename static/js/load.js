@@ -1,0 +1,3 @@
+(function actualizarNumDeItems () {
+    carrito.actualizarContadorPreview();
+  })();

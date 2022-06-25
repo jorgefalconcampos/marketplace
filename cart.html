@@ -105,12 +105,30 @@
         >
         <div id="producto_accordion_body" class="accordion-body">
           <div class="row border border-dark p-3">
-            <div class="col-11">
+            <div class="col-10">
               <p>Alebrije con forma de león | 35x30x20cm</p>
               <p class="h4">$35 <b>(x1)</b></p>
             </div>
-            <div class="col-1 text-center">
-              <button type="button" class="btn btn-outline-danger">
+            <div class="col-2 text-center">
+              <div class="row">
+                <div class="input-group">
+                  <button type="button" class="quantity-left-minus btn btn-danger btn-number"  data-type="minus" data-field="">
+                    <span class="fas fa-solid fa-minus"></span>
+                  </button>
+                  
+                  <input type="text" id="quantity" name="quantity" class="text-center form-control input-number" value="10" min="1" max="100">
+
+                  <button type="button" class="quantity-right-plus btn btn-success btn-number" data-type="plus" data-field="">
+                    <span class="fas fa-solid fa-plus"></span>
+                  </button>
+                </div>
+              </div>
+
+              <hr>
+
+
+              
+              <button type="button" id="" class="btn btn-outline-danger">
                 <i class="fas fa-solid fa-trash fa-2x"></i>
               </button>
             </div>
@@ -262,7 +280,7 @@
       </div>
     </footer>
   </body>
-  <script src="static/js/carrito.js"></script>
+  <script type="module" src="static/js/carrito.js"></script>
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </html>

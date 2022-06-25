@@ -1,8 +1,15 @@
+// import { consultarLocalStorage } from "./main.js";
 
-import { consultarLocalStorage } from "./main.js";
+function consultarLocalStorage(clave) {
+  if (localStorage.getItem(clave) === null) {
+    return false;
+  } else {
+    return localStorage.getItem(clave);
+  }
+}
+
 
 (function consultarArticulos() {
-  alert("1")
   const num_articulos = consultarLocalStorage("items_en_carro");
   
   if (num_articulos) {

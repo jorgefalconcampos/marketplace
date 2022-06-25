@@ -1,35 +1,3 @@
-// const data = {
-//     "articulo_1" : {
-//         "id": 1,
-//         "nombre": "Alebrije de león",
-//         "detalle": "Alebrije con figura tallada de león",
-//         "composición": "Madera",
-//         "medidas": "24x19x90cm",
-//         "precio": 390,
-//         "divisa": "MXN",
-//         "imagenes": [
-//             "articulo1_leon_1.png",
-//             "articulo1_leon_2.png",
-//             "articulo1_leon_3.png",
-//             "articulo1_leon_4.png"
-//         ]
-//     },
-//     "articulo_2" : {
-//         "nombre": "Alebrije de zorro",
-//         "detalle": "Alebrije con figura tallada de zorro",
-//         "composición": "Madera",
-//         "medidas": "29x12x90cm",
-//         "precio": 790,
-//         "divisa": "MXN",
-//         "imagenes": [
-//           "articulo2_zorro_1.png",
-//           "articulo2_zorro_2.png",
-//           "articulo2_zorro_3.png",
-//           "articulo2_zorro_4.png",
-//         ]
-//     }
-// }
-
 function consultarLocalStorage(clave) {
   if (localStorage.getItem(clave) === null) {
     return false;
@@ -121,7 +89,10 @@ class Carrito {
   actualizarContadorPreview() {
     let cantidad = parseInt(consultarLocalStorage("items_en_carro"));
     let carro_icono = document.getElementById("icono_carrito");
-    carro_icono.innerHTML = `&nbsp; <span id='articulos_carrito'>${cantidad}</span>&nbsp;`;
+   
+    isNaN(cantidad)
+    ? carro_icono.innerHTML = `<span id='articulos_carrito'></span>`
+    : carro_icono.innerHTML = `&nbsp; <span id='articulos_carrito'>${cantidad}</span>&nbsp;`
   }
 }
 
@@ -135,11 +106,9 @@ let articulos = []; // articulos que el usuario agrega al carrito
 let total = 0;
 let terminar = false;
 
-cargarElementos();
 
 function cargarElementos() {
   let placeholder = document.getElementById("elementos_placeholder");
-
   fetch("./static/productos.json")
     .then((resp) => resp.json())
     // añadiendo productos al DOM dinámicamente
@@ -328,4 +297,6 @@ function createOrUpdateCart(id, cantidad) {
 //     preguntarCliente();
 // }
 
-export  { consultarLocalStorage }
+(function cargar() {
+  cargarElementos();
+})();

@@ -1,4 +1,3 @@
-
 // const data = {
 //     "articulo_1" : {
 //         "id": 1,
@@ -34,40 +33,44 @@
 function consultarLocalStorage(clave) {
   if (localStorage.getItem(clave) === null) {
     return false;
+  } else {
+    return localStorage.getItem(clave);
   }
-  else { return localStorage.getItem(clave); }
 }
 
 function guardarLocalStorage(clave, valor) {
   if (localStorage.getItem(clave) === null) {
     // no existe en localStorage, entonces lo creamos
     localStorage.setItem(clave, 1);
-  }
-  else {
-    // si ya existe en localStorage, lo actualizamos     
+  } else {
+    // si ya existe en localStorage, lo actualizamos
     localStorage.setItem(clave, valor);
   }
 }
 
-
-
-
-
 class Articulo {
-  constructor(id, 
-    nombre, detalle, composicion, 
-    medidas, precio, divisa, imagenes, 
-    impuestos, cantidad) {
-      this.id = id;
-      this.nombre = nombre;
-      this.detalle = detalle;
-      this.composicion = composicion;
-      this.medidas = medidas;
-      this.precio = precio;
-      this.divisa = divisa;
-      this.imagenes = imagenes;
-      this.impuestos = impuestos;
-      this.cantidad = cantidad;
+  constructor(
+    id,
+    nombre,
+    detalle,
+    composicion,
+    medidas,
+    precio,
+    divisa,
+    imagenes,
+    impuestos,
+    cantidad
+  ) {
+    this.id = id;
+    this.nombre = nombre;
+    this.detalle = detalle;
+    this.composicion = composicion;
+    this.medidas = medidas;
+    this.precio = precio;
+    this.divisa = divisa;
+    this.imagenes = imagenes;
+    this.impuestos = impuestos;
+    this.cantidad = cantidad;
   }
 
   // agregar(cantidad) {
@@ -76,75 +79,61 @@ class Articulo {
 }
 
 class Carrito {
-constructor(articulos, tieneDescuento, descuento) {
-  this.articulos = [];
-  this.tieneDescuento = tieneDescuento;
-  this.descuento = descuento;
-}
+  constructor(articulos, tieneDescuento, descuento) {
+    this.articulos = [];
+    this.tieneDescuento = tieneDescuento;
+    this.descuento = descuento;
+  }
 
-agregarArticulo(articulo) {
-  let yaExiste = carrito.articuloYaEnCarrito(articulo.id);
-    
-  if(yaExiste) {
-    // si ya existe, solo habria que actualizar la cantidad
-    for(let i=0; i<this.articulos.length; i++) {
-      if(this.articulos[i].id == articulo.id) {
-        this.articulos[i].cantidad = this.articulos[i].cantidad+1;  // agregamos 1 en cantidad
+  agregarArticulo(articulo) {
+    let yaExiste = carrito.articuloYaEnCarrito(articulo.id);
+
+    if (yaExiste) {
+      // si ya existe, solo habria que actualizar la cantidad
+      for (let i = 0; i < this.articulos.length; i++) {
+        if (this.articulos[i].id == articulo.id) {
+          this.articulos[i].cantidad = this.articulos[i].cantidad + 1; // agregamos 1 en cantidad
+        }
       }
+      console.log(this.articulos);
+    } else {
+      this.articulos.push(articulo);
     }
-    console.log(this.articulos)
+
+    let items_en_carrito = parseInt(consultarLocalStorage("items_en_carro"));
+    items_en_carrito != false
+      ? guardarLocalStorage("items_en_carro", items_en_carrito + 1)
+      : alert("Este item no está en tu carrito");
+
+    this.actualizarContadorPreview();
   }
-  else {
-    this.articulos.push(articulo)
+
+  articuloYaEnCarrito(id) {
+    if (this.articulos.filter((item) => item.id == id).length > 0) {
+      return true;
+    }
   }
 
-  let items_en_carrito = parseInt(consultarLocalStorage("items_en_carro"));
-  items_en_carrito != false ? guardarLocalStorage("items_en_carro", items_en_carrito+1) : alert("Este item no está en tu carrito")
+  quitarArticulo(id) {}
 
-  this.actualizarContadorPreview();
+  calcularTotal() {}
 
+  actualizarContadorPreview() {
+    let cantidad = parseInt(consultarLocalStorage("items_en_carro"));
+    let carro_icono = document.getElementById("icono_carrito");
+    carro_icono.innerHTML = `&nbsp; <span id='articulos_carrito'>${cantidad}</span>&nbsp;`;
+  }
 }
-
-articuloYaEnCarrito(id) {
-  if (this.articulos.filter(item => item.id == id).length > 0) { return true; }
-}
-
-
-quitarArticulo(id) {
-
-}
-
-calcularTotal() {
-
-}
-
-
-actualizarContadorPreview() {
-  let cantidad = parseInt(consultarLocalStorage("items_en_carro"));
-  let carro_icono = document.getElementById("icono_carrito");
-  carro_icono.innerHTML = `&nbsp; <span id='articulos_carrito'>${cantidad}</span>&nbsp;`;
-}
-
-
-}
-
 
 const IVA = 16;
 const carrito = new Carrito();
-
-
-
 
 let articulos_disponibles = [];
 let articulos = []; // articulos que el usuario agrega al carrito
 let total = 0;
 let terminar = false;
 
-
-
 let placeholder = document.getElementById("elementos_placeholder");
-
-
 
 fetch("./static/productos.json")
   .then((resp) => resp.json())
@@ -190,35 +179,36 @@ fetch("./static/productos.json")
           </div>
           <hr><hr><hr>
       `;
-  
+
       // agregando las imágenes
-      for (let i=0; i<imagenes.length; i++) {
-          document.getElementById(`placeholder_imagenes_${key}`).innerHTML += `
+      for (let i = 0; i < imagenes.length; i++) {
+        document.getElementById(`placeholder_imagenes_${key}`).innerHTML += `
           <div class="col-3">
               <img class="img-fluid" src="./static/img/${imagenes[i]}" alt="" />
           </div>
           `;
       }
-  }})
+    }
+  })
   .then(() => {
-
     // creamos un array de elementos que empiecen con "btn_comprar"
     const botones_comprar = document.querySelectorAll(`[id^="btn_comprar"]`);
 
     // para cada uno de los botones, agregamos el eventListener "click"
-    botones_comprar.forEach(btn => {      
+    botones_comprar.forEach((btn) => {
       btn.addEventListener("click", () => {
-        let id_articulo = document.getElementById(btn.id).getAttribute("data-id");
+        let id_articulo = document
+          .getElementById(btn.id)
+          .getAttribute("data-id");
         createOrUpdateCart(id_articulo, 1); // agregamos el ID del articulo al carrito
       });
-    })
-
+    });
 
     // let btn = document.getElementById("btn_comprar");
     // btn.addEventListener("click", () => {
     //   let carro_icono = document.getElementById("icono_carrito");
     //   carro_icono.innerHTML = "&nbsp; <span id='articulos_carrito'>1</span>&nbsp;";
-      
+
     //   Swal.fire({
     //     icon: 'success',
     //     title: 'Muy buena elección!',
@@ -227,69 +217,53 @@ fetch("./static/productos.json")
     //   })
     //   localStorage.setItem("articulo", JSON.stringify(data.articulo_1));
     // });
-
-
-
   });
 
-
-  // retorna los datos del producto pasándole un ID
-  async function returnProductData(id) {
-    return fetch("./static/productos.json")
-    .then(resp => resp.json())
-    .then(data => {
+// retorna los datos del producto pasándole un ID
+async function returnProductData(id) {
+  return fetch("./static/productos.json")
+    .then((resp) => resp.json())
+    .then((data) => {
       for (const item in data) {
         if (data[item].id == id) {
-          return data[item]; }
+          return data[item];
+        }
       }
     });
-  }
-
-
-function createOrUpdateCart(id, cantidad) {
-
-  let articulo;
-
-  returnProductData(id).then(r => {
-    articulo = new Articulo(r.id, 
-      r.nombre, r.detalle, r.composicion, 
-      r.medidas, r.precio, r.divisa, r.imagenes, IVA/100, cantidad);
-
-
-      carrito.agregarArticulo(articulo);
-    
-      // console.log(articulo)
-      console.log(carrito)
-  });
-
-  
-  Swal.fire({
-    icon: 'success',
-    title: '¡Muy buena elección!',
-    text: "El producto ha sido agregado al carrito",
-    footer: '<a href="/marketplace/cart.html">Ver carrito</a>'
-  })
-
-
 }
 
+function createOrUpdateCart(id, cantidad) {
+  let articulo;
 
+  returnProductData(id).then((r) => {
+    articulo = new Articulo(
+      r.id,
+      r.nombre,
+      r.detalle,
+      r.composicion,
+      r.medidas,
+      r.precio,
+      r.divisa,
+      r.imagenes,
+      IVA / 100,
+      cantidad
+    );
+
+    carrito.agregarArticulo(articulo);
+
+    // console.log(articulo)
+    console.log(carrito);
+  });
+
+  Swal.fire({
+    icon: "success",
+    title: "¡Muy buena elección!",
+    text: "El producto ha sido agregado al carrito",
+    footer: '<a href="/marketplace/cart.html">Ver carrito</a>',
+  });
+}
 
 // articulos_disponibles.push(articulo_1, articulo_2);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // function preguntarCliente() {
 
@@ -319,9 +293,8 @@ function createOrUpdateCart(id, cantidad) {
 //         break;
 //     }
 
-    
 //     const carrito = new Carrito(articulos, false, 0); // no crear un nuevo carrito, si no verificar si existe uno y agregarlo
-    
+
 //     alert("Tu carrito se ve así hasta ahora: ");
 
 //     console.log(carrito)
@@ -345,9 +318,8 @@ function createOrUpdateCart(id, cantidad) {
 // let nombre = prompt("¡Hola! ¿Me puedes dar tu nombre?");
 // alert(`Hola ${nombre}, estamos encantados de tenerte en nuestra tienda.`)
 
-
 // while(terminar === false) {
 //     preguntarCliente();
 // }
 
-
+// export { consultarLocalStorage }

@@ -67,39 +67,104 @@
       </div>
     </nav>
     <h1 class="title center">Carrito de compras</h1>
-
     <div class="glass">
-        <div id="carrito_titulo" class="grid__title">Aún no tienes artículos en tu carrito</div>
-            <div class="pt-3 accordion" id="accordionExample">
-              
-              <div class="accordion-item">
-                <h2 class="accordion-header" id="headingOne">
-                  <button
-                    id="producto_accordion_title"
-                    class="accordion-button"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#collapseOne"
-                    aria-expanded="true"
-                    aria-controls="collapseOne"
-                  >
-                    
-                  </button>
-                </h2>
-                <div
-                  id="collapseOne"
-                  class="accordion-collapse collapse show"
-                  aria-labelledby="headingOne"
-                  data-bs-parent="#accordionExample"
-                >
-                  <div id="producto_accordion-body" class="accordion-body">
-                    Creación de fondo cultura <strong>Completado.</strong>
-                  </div>
-                </div>
-              </div>
+      <div class="text-center">
+        <div id="carrito_titulo" class="text-center grid__title">Aún no tienes artículos en tu carrito</div>
+        
+        <a type="button" href="/marketplace/detalle.html" id="btn_comprar_redirect" class="button text-uppercase mt-4 px-3 btn btn-primary justify-content-center">
+        ver artículos
+        </a>
+    </div>
+    
+    <div class="py-3 accordion" id="accordion_products_1">
+      <div class="accordion-item">
+        <div class="row">
+          <h2 class="col-10" id="heading_1">
+            <button 
+              id="producto_2_accordion_title"
+              class="accordion-button"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapse_1"
+              aria-expanded="true"
+              aria-controls="collapse_1"
+              >
+              Artículo #1: Alebrije con forma de León             
+            </button>
+          </h2>
+          <div class="col-2 pt-3 lead">
+            Tota: $50
+          </div>
+        </div>
+        
+        <div
+          id="collapse_1"
+          class="accordion-collapse collapse show"
+          aria-labelledby="heading_1"
+          data-bs-parent="#accordionExample"
+        >
+        <div id="producto_accordion_body" class="accordion-body">
+          <div class="row border border-dark p-3">
+            <div class="col-11">
+              <p>Alebrije con forma de león | 35x30x20cm</p>
+              <p class="h4">$35 <b>(x1)</b></p>
             </div>
-        <br>
-        <!-- <div id="" class="grid__footer">Fecha destinada de entrega: 12/02/2026</div> -->
+            <div class="col-1 text-center">
+              <button type="button" class="btn btn-outline-danger">
+                <i class="fas fa-solid fa-trash fa-2x"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="py-3 accordion" id="accordion_products_2">
+      <div class="accordion-item">
+        <div class="row">
+          <h2 class="col-10" id="heading_2">
+            <button 
+              id="producto_2_accordion_title"
+              class="accordion-button"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapse_2"
+              aria-expanded="true"
+              aria-controls="collapse_2"
+              >
+              Artículo #1: Alebrije con forma de León             
+            </button>
+          </h2>
+          <div class="col-2 pt-3 lead">
+            Tota: $50
+          </div>        
+        </div>
+        
+        <div
+          id="collapse_2"
+          class="accordion-collapse collapse show"
+          aria-labelledby="heading_2"
+          data-bs-parent="#accordionExample"
+        >
+        <div id="producto_2_accordion_body" class="accordion-body">
+          <div class="row border border-dark p-3">
+            <div class="col-11">
+              <p>Alebrije con forma de león | 35x30x20cm</p>
+              <p class="h4">$35 <b>(x1)</b></p>
+            </div>
+            <div class="col-1 text-center">
+              <button type="button" class="btn btn-outline-danger">
+                <i class="fas fa-solid fa-trash fa-2x"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+
       </section>
     </div>
 
@@ -197,5 +262,7 @@
       </div>
     </footer>
   </body>
-  <script src=static/js/carrito.js"></script>
+  <script src="static/js/carrito.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </html>

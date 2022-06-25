@@ -7,9 +7,10 @@ function consultarLocalStorage(clave) {
 }
 
 function guardarLocalStorage(clave, valor) {
-  if (localStorage.getItem(clave) === null) {
+  if (localStorage.getItem(clave) === null && clave != "cart") {
     // no existe en localStorage, entonces lo creamos
     localStorage.setItem(clave, 1);
+
   } else {
     // si ya existe en localStorage, lo actualizamos
     localStorage.setItem(clave, valor);
@@ -54,7 +55,10 @@ class Carrito {
   }
 
   agregarArticulo(articulo) {
-    let yaExiste = carrito.articuloYaEnCarrito(articulo.id);
+
+
+  
+    let yaExiste = mi_carrito.articuloYaEnCarrito(articulo.id);
 
     if (yaExiste) {
       // si ya existe, solo habria que actualizar la cantidad
@@ -97,9 +101,9 @@ class Carrito {
 }
 
 const IVA = 16;
-const carrito = new Carrito();
+const mi_carrito = new Carrito();
 
-carrito.actualizarContadorPreview();
+mi_carrito.actualizarContadorPreview();
 
 let articulos_disponibles = [];
 let articulos = []; // articulos que el usuario agrega al carrito
@@ -129,7 +133,7 @@ function cargarElementos() {
             </div>
             <div class="row">
               <div class="column">${contenido.detalle}</div>
-              <div class="column">${contenido.composición}</div>
+              <div class="column">${contenido.composicion}</div>
               <div class="column">${contenido.medidas}</div>
               <div class="column">${contenido.precio} ${contenido.divisa}</div>
             </div>
@@ -224,10 +228,16 @@ function createOrUpdateCart(id, cantidad) {
       cantidad
     );
 
-    carrito.agregarArticulo(articulo);
+    mi_carrito.agregarArticulo(articulo);
 
     // console.log(articulo)
-    console.log(carrito);
+    
+    console.log(mi_carrito);
+  }).finally(() => {
+    guardarLocalStorage("cart", JSON.stringify(mi_carrito))
+
+
+    // console.log("aa")
   });
 
   Swal.fire({
@@ -236,6 +246,8 @@ function createOrUpdateCart(id, cantidad) {
     text: "El producto ha sido agregado al carrito",
     footer: '<a href="/marketplace/cart.html">Ver carrito</a>',
   });
+
+
 }
 
 // articulos_disponibles.push(articulo_1, articulo_2);

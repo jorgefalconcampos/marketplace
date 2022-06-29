@@ -8,6 +8,18 @@ function consultarLocalStorage(clave) {
   }
 }
 
+function guardarLocalStorage(clave, valor) {
+  if (localStorage.getItem(clave) === null && clave != "cart") {
+    // no existe en localStorage, entonces lo creamos
+    localStorage.setItem(clave, 1);
+
+  } else {
+    // si ya existe en localStorage, lo actualizamos
+    localStorage.setItem(clave, valor);
+  }
+}
+
+
 
 function consultarNumDeArticulos() {
   const num_articulos = consultarLocalStorage("items_en_carro");
@@ -34,10 +46,6 @@ function cargarArticulos() {
 
   for (let i=0; i<arts.articulos.length; i++) {
     let articulo = arts.articulos[i];
-
-
-    console.log(arts.articulos[i])
-
     placeholder.innerHTML += `
       <div class="py-3 accordion" id="accordion_products_${i+1}">
       <div class="accordion-item">
@@ -73,21 +81,8 @@ function cargarArticulos() {
               <p class="h4">$${articulo.precio} <b>(x${articulo.cantidad})</b></p>
             </div>
             <div class="col-2 text-center">
-              <div class="row">
-                <div class="input-group">
-                  <button type="button" class="quantity-left-minus btn btn-danger btn-number"  data-type="minus" data-field="">
-                    <span class="fas fa-solid fa-minus"></span>
-                  </button>
-                  
-                  <input type="text" id="quantity" name="quantity" class="text-center form-control input-number" value="10" min="1" max="100">
-
-                  <button type="button" class="quantity-right-plus btn btn-success btn-number" data-type="plus" data-field="">
-                    <span class="fas fa-solid fa-plus"></span>
-                  </button>
-                </div>
-              </div>
-              <hr>
-              <button type="button" id="" class="btn btn-outline-danger">
+             
+              <button data-id="${i}" data-name="${articulo.nombre}"  title="Quitar ${articulo.nombre} del carrito" type="button" id="quitar_art_${i+1}" class="btn btn-outline-danger">
                 <i class="fas fa-solid fa-trash fa-2x"></i>
               </button>
             </div>
@@ -99,6 +94,44 @@ function cargarArticulos() {
     `;
   }
 
+  placeholder.innerHTML += `
+  <div class="row text-center">
+  <div class="col">
+    <button
+    type="button"
+    id="btn_comprar_todo"
+    class="text-uppercase mt-3 btn btn-success btn-lg"
+    >
+    comprar todo
+  </button>
+</div>
+</div>
+  `
+
+
+  const botones_eliminar = document.querySelectorAll(`[id^="quitar_art_"]`);
+
+  // para cada uno de los botones, agregamos el eventListener "click"
+  botones_eliminar.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      let id_articulo = document.getElementById(btn.id).getAttribute("data-id");
+      let nombre_articulo = document.getElementById(btn.id).getAttribute("data-name");
+      borrarArticulo(id_articulo, nombre_articulo); 
+    });
+  });
+
+  const boton_comprar = document.getElementById("btn_comprar_todo");
+
+  boton_comprar.addEventListener("click", () => {
+    Swal.fire(
+      'Artículos comprados',
+      'Los artículos se han preparado para el envío.',
+      'success'
+    )
+  });
+
+
+
 
 
 }
@@ -106,13 +139,36 @@ function cargarArticulos() {
 
 
 // borra todos los artículos del mismo tipo del carrito
-function borrarTodosLosArticulos() {
-  
+function borrarArticulo(id, nombre) {
   Swal.fire({
     icon: "question",
-    title: "¿Realmente deseas borrar todos los artículos?",
-    text: "El producto 'ss' se eliminará por ",
-    // footer: 'cart>Ver carrito</a>',
+    title: `¿Realmente deseas borrar tu ${nombre} del carrito?`,
+    text: "El producto está se quitará en su totalidad de tu carrito, incluso si lo has agregado más de una vez. ",
+    showCancelButton: true,
+    confirmButtonColor: '#d33',
+    confirmButtonText: 'Si, eliminar'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      Swal.fire(
+        'Eliminado!',
+        'El artículo ha sido quitado del carrito.',
+        'success'
+      )
+      // actualizamos localStorage, UI y los items en carrito
+      let arts = JSON.parse(consultarLocalStorage("cart"));
+      // console.log(arts.articulos[id]);
+
+      let qtty = arts.articulos[id].cantidad;
+      let items_en_carrito = parseInt(consultarLocalStorage("items_en_carro"));
+      items_en_carrito != false
+      ? guardarLocalStorage("items_en_carro", items_en_carrito - qtty)
+      : alert("Este item no está en tu carrito");
+
+      arts.articulos.pop(id)
+
+      guardarLocalStorage("cart", JSON.stringify(arts));
+      document.location.reload()
+    }
   });
 
 }
